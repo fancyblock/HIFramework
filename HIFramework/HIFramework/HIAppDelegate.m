@@ -8,33 +8,32 @@
 
 #import "HIAppDelegate.h"
 
-#import "HIViewController.h"
 
 @implementation HIAppDelegate
 
 @synthesize window = _window;
-@synthesize viewController = _viewController;
 
 - (void)dealloc
 {
     [_window release];
-    [_viewController release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    [application setStatusBarHidden:YES];
+    
     // Override point for customization after application launch.
-    self.viewController = [[HIViewController alloc] init];
-    UIView* canva = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-    self.viewController.view = canva;
     
-    [canva setBackgroundColor:[UIColor blackColor]];
-    self.viewController.wantsFullScreenLayout = YES;
+    // create the game app
+    m_gameApp = [[HIApp alloc] initWithOrientation:ORIENTATION_PORTRAIT withFPS:30];
     
-    self.window.rootViewController = self.viewController;
+    //TODO  ( set delegate or not ? )
+    
+    self.window.rootViewController = m_gameApp.viewController;
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
  

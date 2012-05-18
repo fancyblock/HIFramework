@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@class HIViewController;
+#import "HIFramework.h"
 
 @interface HIAppDelegate : UIResponder <UIApplicationDelegate>
+{
+    HIApp* m_gameApp;
+    
+    //TODO 
+}
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) HIViewController *viewController;
 
 @end

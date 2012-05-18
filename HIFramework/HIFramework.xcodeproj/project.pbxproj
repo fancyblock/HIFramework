@@ -13,7 +13,10 @@
 		CF4C17021563FE7B0078F4D6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF4C17001563FE7B0078F4D6 /* InfoPlist.strings */; };
 		CF4C17041563FE7B0078F4D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4C17031563FE7B0078F4D6 /* main.m */; };
 		CF4C17081563FE7B0078F4D6 /* HIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4C17071563FE7B0078F4D6 /* HIAppDelegate.m */; };
-		CF4C170B1563FE7B0078F4D6 /* HIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4C170A1563FE7B0078F4D6 /* HIViewController.m */; };
+		CF7E1DE815661A13005D58C9 /* HIFramework_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7E1DE715661A13005D58C9 /* HIFramework_icon.png */; };
+		CF7E1DEC15661E12005D58C9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7E1DEB15661E12005D58C9 /* OpenGLES.framework */; };
+		CF7E1DEF15661E9A005D58C9 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7E1DEE15661E9A005D58C9 /* GLKit.framework */; };
+		CF7E1DF315661FDD005D58C9 /* HIApp.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7E1DF215661FDD005D58C9 /* HIApp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +30,13 @@
 		CF4C17051563FE7B0078F4D6 /* HIFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HIFramework-Prefix.pch"; sourceTree = "<group>"; };
 		CF4C17061563FE7B0078F4D6 /* HIAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HIAppDelegate.h; sourceTree = "<group>"; };
 		CF4C17071563FE7B0078F4D6 /* HIAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HIAppDelegate.m; sourceTree = "<group>"; };
-		CF4C17091563FE7B0078F4D6 /* HIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HIViewController.h; sourceTree = "<group>"; };
-		CF4C170A1563FE7B0078F4D6 /* HIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HIViewController.m; sourceTree = "<group>"; };
+		CF7E1DE715661A13005D58C9 /* HIFramework_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HIFramework_icon.png; sourceTree = "<group>"; };
+		CF7E1DEB15661E12005D58C9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		CF7E1DEE15661E9A005D58C9 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		CF7E1DF015661F6B005D58C9 /* HIFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HIFramework.h; sourceTree = "<group>"; };
+		CF7E1DF115661FDD005D58C9 /* HIApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HIApp.h; path = HIApp/HIApp.h; sourceTree = "<group>"; };
+		CF7E1DF215661FDD005D58C9 /* HIApp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HIApp.m; path = HIApp/HIApp.m; sourceTree = "<group>"; };
+		CF7E1DF4156625C3005D58C9 /* HIFDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HIFDefines.h; path = HIApp/HIFDefines.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +44,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF7E1DEF15661E9A005D58C9 /* GLKit.framework in Frameworks */,
+				CF7E1DEC15661E12005D58C9 /* OpenGLES.framework in Frameworks */,
 				CF4C16F81563FE7B0078F4D6 /* UIKit.framework in Frameworks */,
 				CF4C16FA1563FE7B0078F4D6 /* Foundation.framework in Frameworks */,
 				CF4C16FC1563FE7B0078F4D6 /* CoreGraphics.framework in Frameworks */,
@@ -48,6 +58,7 @@
 		CF4C16E81563FE7B0078F4D6 = {
 			isa = PBXGroup;
 			children = (
+				CF7E1DEA15661A20005D58C9 /* Resource */,
 				CF4C16FD1563FE7B0078F4D6 /* HIFramework */,
 				CF4C16F61563FE7B0078F4D6 /* Frameworks */,
 				CF4C16F41563FE7B0078F4D6 /* Products */,
@@ -65,6 +76,8 @@
 		CF4C16F61563FE7B0078F4D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF7E1DEE15661E9A005D58C9 /* GLKit.framework */,
+				CF7E1DEB15661E12005D58C9 /* OpenGLES.framework */,
 				CF4C16F71563FE7B0078F4D6 /* UIKit.framework */,
 				CF4C16F91563FE7B0078F4D6 /* Foundation.framework */,
 				CF4C16FB1563FE7B0078F4D6 /* CoreGraphics.framework */,
@@ -75,11 +88,11 @@
 		CF4C16FD1563FE7B0078F4D6 /* HIFramework */ = {
 			isa = PBXGroup;
 			children = (
+				CF7E1DED15661E6C005D58C9 /* HIApp */,
 				CF4C17061563FE7B0078F4D6 /* HIAppDelegate.h */,
 				CF4C17071563FE7B0078F4D6 /* HIAppDelegate.m */,
-				CF4C17091563FE7B0078F4D6 /* HIViewController.h */,
-				CF4C170A1563FE7B0078F4D6 /* HIViewController.m */,
 				CF4C16FE1563FE7B0078F4D6 /* Supporting Files */,
+				CF7E1DF015661F6B005D58C9 /* HIFramework.h */,
 			);
 			path = HIFramework;
 			sourceTree = "<group>";
@@ -93,6 +106,24 @@
 				CF4C17051563FE7B0078F4D6 /* HIFramework-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CF7E1DEA15661A20005D58C9 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CF7E1DE715661A13005D58C9 /* HIFramework_icon.png */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		CF7E1DED15661E6C005D58C9 /* HIApp */ = {
+			isa = PBXGroup;
+			children = (
+				CF7E1DF115661FDD005D58C9 /* HIApp.h */,
+				CF7E1DF215661FDD005D58C9 /* HIApp.m */,
+				CF7E1DF4156625C3005D58C9 /* HIFDefines.h */,
+			);
+			name = HIApp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF4C17021563FE7B0078F4D6 /* InfoPlist.strings in Resources */,
+				CF7E1DE815661A13005D58C9 /* HIFramework_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,7 +190,7 @@
 			files = (
 				CF4C17041563FE7B0078F4D6 /* main.m in Sources */,
 				CF4C17081563FE7B0078F4D6 /* HIAppDelegate.m in Sources */,
-				CF4C170B1563FE7B0078F4D6 /* HIViewController.m in Sources */,
+				CF7E1DF315661FDD005D58C9 /* HIApp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +292,7 @@
 				CF4C17131563FE7B0078F4D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

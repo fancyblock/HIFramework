@@ -8,6 +8,13 @@
 
 #import "HIApp.h"
 
+@interface HIApp(private)
+
+- (void)setupOpenGL;
+
+@end
+
+
 @implementation HIApp
 
 @synthesize viewController = m_glViewController;
@@ -23,10 +30,28 @@
 {
     [super init];
     
-    //TODO 
+    CGRect frame;
+    if( m_orientation == ORIENTATION_LANDSCAPE )
+    {
+        frame = CGRectMake( 0, 0, 480, 320 );
+    }
+    
+    if( m_orientation == ORIENTATION_PORTRAIT )
+    {
+        frame = CGRectMake( 0, 0, 320, 480 );
+    }
     
     m_glContext = [[[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1] autorelease];
-    m_glView = [GLKView alloc] initWithFrame:<#(CGRect)#> [context:m_glContext];
+    m_glView = [[GLKView alloc] initWithFrame:frame context:m_glContext];
+    m_glViewController = [[GLKViewController alloc] init];
+    
+    m_glViewController.view = m_glView;
+    m_glViewController.delegate = self;
+    m_glView.delegate = self;
+    m_glView.context = m_glContext;
+    m_glView.drawableDepthFormat = GLKViewDrawableDepthFormat24;
+    
+    [self setupOpenGL];
     
     return self;
 }
@@ -58,7 +83,21 @@
 {
     [super dealloc];
     
-    //TODO 
+    [m_glViewController release];
+    [m_glView release];
+    [m_glContext release];
+}
+     
+     
+//------------------------------ private functions -------------------------------
+     
+
+// setup the openGL
+- (void)setupOpenGL
+{
+    [EAGLContext setCurrentContext:m_glContext];
+    
+    //TODO
 }
 
 

@@ -113,6 +113,8 @@
 {
     [EAGLContext setCurrentContext:m_glContext];
     
+    glClearColor( 0, 0, 0, 1 );
+    
     //TODO
 }
 
@@ -143,7 +145,11 @@
  */
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
+    glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT );
+    
     //TODO 
+    
+    glFlush();
 }
 
 

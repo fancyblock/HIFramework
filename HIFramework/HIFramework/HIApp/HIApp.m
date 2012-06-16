@@ -33,12 +33,26 @@
     CGRect frame;
     if( m_orientation == ORIENTATION_LANDSCAPE )
     {
-        frame = CGRectMake( 0, 0, 480, 320 );
+        if( m_isIphone == YES )
+        {
+            frame = CGRectMake( 0, 0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH );
+        }
+        else 
+        {
+            frame = CGRectMake( 0, 0, IPAD_SCREEN_HEIGHT, IPAD_SCREEN_WIDTH );
+        }
     }
     
     if( m_orientation == ORIENTATION_PORTRAIT )
     {
-        frame = CGRectMake( 0, 0, 320, 480 );
+        if( m_isIphone == YES )
+        {
+            frame = CGRectMake( 0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT );
+        }
+        else 
+        {
+            frame = CGRectMake( 0, 0, IPAD_SCREEN_WIDTH, IPAD_SCREEN_HEIGHT );
+        }
     }
     
     m_glContext = [[[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1] autorelease];
@@ -59,13 +73,15 @@
 
 /**
  * @desc    constructor
+ * @para    isIphone
  * @para    orientation
  * @para    fps
  * @return  self
  */
-- (id)initWithOrientation:(int)orientation withFPS:(int)fps
+- (id)initWithOrientation:(int)orientation deviceType:(BOOL)isIphone withFPS:(int)fps
 {
     m_orientation = orientation;
+    m_isIphone = isIphone;
     m_fps = fps;
     
     [self init];

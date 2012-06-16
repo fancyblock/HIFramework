@@ -27,7 +27,7 @@
     // Override point for customization after application launch.
     
     // create the game app
-    m_gameApp = [[HIApp alloc] initWithOrientation:ORIENTATION_PORTRAIT withFPS:30];
+    m_gameApp = [[HIApp alloc] initWithOrientation:ORIENTATION_PORTRAIT deviceType:YES withFPS:30];
     
     //TODO  ( set delegate or not ? )
     
@@ -74,6 +74,8 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+    
+    [m_gameApp release];
 }
 
 @end

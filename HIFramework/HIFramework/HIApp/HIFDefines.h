@@ -18,4 +18,6 @@
 #define IPAD_SCREEN_WIDTH       768
 #define IPAD_SCREEN_HEIGHT      1024
 
+#define Z_DEPTH     200.0f
+
 #endif

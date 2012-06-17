@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF483827158E43B000529A53 /* RenderCore.m in Sources */ = {isa = PBXBuildFile; fileRef = CF483826158E43B000529A53 /* RenderCore.m */; };
 		CF4C16F81563FE7B0078F4D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C16F71563FE7B0078F4D6 /* UIKit.framework */; };
 		CF4C16FA1563FE7B0078F4D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C16F91563FE7B0078F4D6 /* Foundation.framework */; };
 		CF4C16FC1563FE7B0078F4D6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C16FB1563FE7B0078F4D6 /* CoreGraphics.framework */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF483825158E43B000529A53 /* RenderCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenderCore.h; path = HIApp/Graphic/RenderCore.h; sourceTree = "<group>"; };
+		CF483826158E43B000529A53 /* RenderCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RenderCore.m; path = HIApp/Graphic/RenderCore.m; sourceTree = "<group>"; };
 		CF4C16F31563FE7B0078F4D6 /* HIFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HIFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4C16F71563FE7B0078F4D6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CF4C16F91563FE7B0078F4D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -55,6 +58,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF483820158E431A00529A53 /* Graphic */ = {
+			isa = PBXGroup;
+			children = (
+				CF483825158E43B000529A53 /* RenderCore.h */,
+				CF483826158E43B000529A53 /* RenderCore.m */,
+			);
+			name = Graphic;
+			sourceTree = "<group>";
+		};
 		CF4C16E81563FE7B0078F4D6 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +131,7 @@
 		CF7E1DED15661E6C005D58C9 /* HIApp */ = {
 			isa = PBXGroup;
 			children = (
+				CF483820158E431A00529A53 /* Graphic */,
 				CF7E1DF115661FDD005D58C9 /* HIApp.h */,
 				CF7E1DF215661FDD005D58C9 /* HIApp.m */,
 				CF7E1DF4156625C3005D58C9 /* HIFDefines.h */,
@@ -191,6 +204,7 @@
 				CF4C17041563FE7B0078F4D6 /* main.m in Sources */,
 				CF4C17081563FE7B0078F4D6 /* HIAppDelegate.m in Sources */,
 				CF7E1DF315661FDD005D58C9 /* HIApp.m in Sources */,
+				CF483827158E43B000529A53 /* RenderCore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

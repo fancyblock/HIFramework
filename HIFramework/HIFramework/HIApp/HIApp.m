@@ -7,7 +7,7 @@
 //
 
 #import "HIApp.h"
-#import "Graphic/RenderCore.h"
+#import "../Graphic/RenderCore.h"
 
 
 @interface HIApp(private)

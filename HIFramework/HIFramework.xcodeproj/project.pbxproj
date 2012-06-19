@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF483827158E43B000529A53 /* RenderCore.m in Sources */ = {isa = PBXBuildFile; fileRef = CF483826158E43B000529A53 /* RenderCore.m */; };
 		CF4C16F81563FE7B0078F4D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C16F71563FE7B0078F4D6 /* UIKit.framework */; };
 		CF4C16FA1563FE7B0078F4D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C16F91563FE7B0078F4D6 /* Foundation.framework */; };
 		CF4C16FC1563FE7B0078F4D6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C16FB1563FE7B0078F4D6 /* CoreGraphics.framework */; };
 		CF4C17021563FE7B0078F4D6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF4C17001563FE7B0078F4D6 /* InfoPlist.strings */; };
 		CF4C17041563FE7B0078F4D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4C17031563FE7B0078F4D6 /* main.m */; };
 		CF4C17081563FE7B0078F4D6 /* HIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4C17071563FE7B0078F4D6 /* HIAppDelegate.m */; };
+		CF7B773A15907F79006F03C6 /* RenderCore.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7B773915907F79006F03C6 /* RenderCore.m */; };
+		CF7B774115908129006F03C6 /* TaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7B774015908129006F03C6 /* TaskManager.m */; };
 		CF7E1DE815661A13005D58C9 /* HIFramework_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7E1DE715661A13005D58C9 /* HIFramework_icon.png */; };
 		CF7E1DEC15661E12005D58C9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7E1DEB15661E12005D58C9 /* OpenGLES.framework */; };
 		CF7E1DEF15661E9A005D58C9 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7E1DEE15661E9A005D58C9 /* GLKit.framework */; };
@@ -21,8 +22,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CF483825158E43B000529A53 /* RenderCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenderCore.h; path = HIApp/Graphic/RenderCore.h; sourceTree = "<group>"; };
-		CF483826158E43B000529A53 /* RenderCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RenderCore.m; path = HIApp/Graphic/RenderCore.m; sourceTree = "<group>"; };
 		CF4C16F31563FE7B0078F4D6 /* HIFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HIFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4C16F71563FE7B0078F4D6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CF4C16F91563FE7B0078F4D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -33,6 +32,10 @@
 		CF4C17051563FE7B0078F4D6 /* HIFramework-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HIFramework-Prefix.pch"; sourceTree = "<group>"; };
 		CF4C17061563FE7B0078F4D6 /* HIAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HIAppDelegate.h; sourceTree = "<group>"; };
 		CF4C17071563FE7B0078F4D6 /* HIAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HIAppDelegate.m; sourceTree = "<group>"; };
+		CF7B773815907F79006F03C6 /* RenderCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenderCore.h; path = Graphic/RenderCore.h; sourceTree = "<group>"; };
+		CF7B773915907F79006F03C6 /* RenderCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RenderCore.m; path = Graphic/RenderCore.m; sourceTree = "<group>"; };
+		CF7B773F15908129006F03C6 /* TaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskManager.h; path = Task/TaskManager.h; sourceTree = "<group>"; };
+		CF7B774015908129006F03C6 /* TaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskManager.m; path = Task/TaskManager.m; sourceTree = "<group>"; };
 		CF7E1DE715661A13005D58C9 /* HIFramework_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HIFramework_icon.png; sourceTree = "<group>"; };
 		CF7E1DEB15661E12005D58C9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		CF7E1DEE15661E9A005D58C9 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -61,8 +64,8 @@
 		CF483820158E431A00529A53 /* Graphic */ = {
 			isa = PBXGroup;
 			children = (
-				CF483825158E43B000529A53 /* RenderCore.h */,
-				CF483826158E43B000529A53 /* RenderCore.m */,
+				CF7B773815907F79006F03C6 /* RenderCore.h */,
+				CF7B773915907F79006F03C6 /* RenderCore.m */,
 			);
 			name = Graphic;
 			sourceTree = "<group>";
@@ -100,6 +103,11 @@
 		CF4C16FD1563FE7B0078F4D6 /* HIFramework */ = {
 			isa = PBXGroup;
 			children = (
+				CF7B773E15907FE1006F03C6 /* Gui */,
+				CF7B773D15907FDB006F03C6 /* File */,
+				CF7B773C15907FD5006F03C6 /* Sound */,
+				CF7B773B15907FBD006F03C6 /* Task */,
+				CF483820158E431A00529A53 /* Graphic */,
 				CF7E1DED15661E6C005D58C9 /* HIApp */,
 				CF4C17061563FE7B0078F4D6 /* HIAppDelegate.h */,
 				CF4C17071563FE7B0078F4D6 /* HIAppDelegate.m */,
@@ -120,6 +128,36 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		CF7B773B15907FBD006F03C6 /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				CF7B773F15908129006F03C6 /* TaskManager.h */,
+				CF7B774015908129006F03C6 /* TaskManager.m */,
+			);
+			name = Task;
+			sourceTree = "<group>";
+		};
+		CF7B773C15907FD5006F03C6 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Sound;
+			sourceTree = "<group>";
+		};
+		CF7B773D15907FDB006F03C6 /* File */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = File;
+			sourceTree = "<group>";
+		};
+		CF7B773E15907FE1006F03C6 /* Gui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Gui;
+			sourceTree = "<group>";
+		};
 		CF7E1DEA15661A20005D58C9 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,7 +169,6 @@
 		CF7E1DED15661E6C005D58C9 /* HIApp */ = {
 			isa = PBXGroup;
 			children = (
-				CF483820158E431A00529A53 /* Graphic */,
 				CF7E1DF115661FDD005D58C9 /* HIApp.h */,
 				CF7E1DF215661FDD005D58C9 /* HIApp.m */,
 				CF7E1DF4156625C3005D58C9 /* HIFDefines.h */,
@@ -204,7 +241,8 @@
 				CF4C17041563FE7B0078F4D6 /* main.m in Sources */,
 				CF4C17081563FE7B0078F4D6 /* HIAppDelegate.m in Sources */,
 				CF7E1DF315661FDD005D58C9 /* HIApp.m in Sources */,
-				CF483827158E43B000529A53 /* RenderCore.m in Sources */,
+				CF7B773A15907F79006F03C6 /* RenderCore.m in Sources */,
+				CF7B774115908129006F03C6 /* TaskManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,8 @@
 #ifndef HIFramework_HIFramework_h
 #define HIFramework_HIFramework_h
 
+#import "HIApp/HIFDefines.h"
 #import "HIApp/HIApp.h"
+#import "Graphic/RenderCore.h"
 
 #endif

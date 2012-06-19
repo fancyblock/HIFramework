@@ -8,10 +8,32 @@
 
 #import <Foundation/Foundation.h>
 
+#define TASK_STATUS_IDLE        1
+#define TASK_STATUS_ADDING      2
+#define TASK_STATUS_REMOVING    3
+#define TASK_STATUS_RUNNING     4
+
+
 @interface Task : NSObject
 {
-    int m_priority;
-    int m_status;
+    //TODO 
 }
+
+@property (nonatomic, readwrite) int STATUS;
+
+
+- (void)Start;
+
+- (void)Stop;
+
+- (void)onBegin;
+
+- (void)onEnd;
+
+- (void)onFrame:(float)elapse;
+
+- (void)onDraw:(float)elapse;
+
+//TODO 
 
 @end

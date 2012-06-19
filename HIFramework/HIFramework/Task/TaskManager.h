@@ -17,4 +17,10 @@
 + (TaskManager*)sharedInstance;
 
 
+- (BOOL)AddTask:(Task*)task;
+
+- (BOOL)StartTask:(Task*)task;
+
+- (BOOL)StopTask:(Task*)task;
+
 @end

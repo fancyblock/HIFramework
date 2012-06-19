@@ -51,6 +51,45 @@ static BOOL m_saftFlag = NO;
 }
 
 
+/**
+ * @desc    add a new task to the taskManager
+ * @para    task
+ * @return  success or fail
+ **/
+- (BOOL)AddTask:(Task*)task
+{
+    //TODO
+    
+    return YES;
+}
+
+
+/**
+ * @desc    start a task
+ * @para    task
+ * @return  success or fail
+ */
+- (BOOL)StartTask:(Task*)task
+{
+    //TODO 
+    
+    return YES;
+}
+
+
+/**
+ * @desc    stop a task
+ * @para    task
+ * @return  success or fail
+ */
+- (BOOL)StopTask:(Task*)task
+{
+    //TODO 
+    
+    return YES;
+}
+
+
 //TODO 
 
 

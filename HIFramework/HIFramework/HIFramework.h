@@ -12,5 +12,7 @@
 #import "HIApp/HIFDefines.h"
 #import "HIApp/HIApp.h"
 #import "Graphic/RenderCore.h"
+#import "Task/TaskManager.h"
+#import "Task/Task.h"
 
 #endif

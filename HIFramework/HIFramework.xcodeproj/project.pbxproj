@@ -15,6 +15,7 @@
 		CF4C17081563FE7B0078F4D6 /* HIAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4C17071563FE7B0078F4D6 /* HIAppDelegate.m */; };
 		CF7B773A15907F79006F03C6 /* RenderCore.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7B773915907F79006F03C6 /* RenderCore.m */; };
 		CF7B774115908129006F03C6 /* TaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7B774015908129006F03C6 /* TaskManager.m */; };
+		CF7B774415908F23006F03C6 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7B774315908F23006F03C6 /* Task.m */; };
 		CF7E1DE815661A13005D58C9 /* HIFramework_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CF7E1DE715661A13005D58C9 /* HIFramework_icon.png */; };
 		CF7E1DEC15661E12005D58C9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7E1DEB15661E12005D58C9 /* OpenGLES.framework */; };
 		CF7E1DEF15661E9A005D58C9 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF7E1DEE15661E9A005D58C9 /* GLKit.framework */; };
@@ -36,6 +37,8 @@
 		CF7B773915907F79006F03C6 /* RenderCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RenderCore.m; path = Graphic/RenderCore.m; sourceTree = "<group>"; };
 		CF7B773F15908129006F03C6 /* TaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskManager.h; path = Task/TaskManager.h; sourceTree = "<group>"; };
 		CF7B774015908129006F03C6 /* TaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskManager.m; path = Task/TaskManager.m; sourceTree = "<group>"; };
+		CF7B774215908F23006F03C6 /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Task.h; path = Task/Task.h; sourceTree = "<group>"; };
+		CF7B774315908F23006F03C6 /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Task.m; path = Task/Task.m; sourceTree = "<group>"; };
 		CF7E1DE715661A13005D58C9 /* HIFramework_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HIFramework_icon.png; sourceTree = "<group>"; };
 		CF7E1DEB15661E12005D58C9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		CF7E1DEE15661E9A005D58C9 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
@@ -133,6 +136,8 @@
 			children = (
 				CF7B773F15908129006F03C6 /* TaskManager.h */,
 				CF7B774015908129006F03C6 /* TaskManager.m */,
+				CF7B774215908F23006F03C6 /* Task.h */,
+				CF7B774315908F23006F03C6 /* Task.m */,
 			);
 			name = Task;
 			sourceTree = "<group>";
@@ -243,6 +248,7 @@
 				CF7E1DF315661FDD005D58C9 /* HIApp.m in Sources */,
 				CF7B773A15907F79006F03C6 /* RenderCore.m in Sources */,
 				CF7B774115908129006F03C6 /* TaskManager.m in Sources */,
+				CF7B774415908F23006F03C6 /* Task.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

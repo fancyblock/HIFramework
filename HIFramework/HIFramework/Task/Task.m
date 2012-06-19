@@ -1,20 +1,14 @@
 //
-//  TaskManager.h
+//  Task.m
 //  HIFramework
 //
 //  Created by He jia bin on 6/19/12.
 //  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "Task.h"
+#import "TaskManager.h"
 
-@interface TaskManager : NSObject
-{
-    //TODO 
-}
-
-+ (TaskManager*)sharedInstance;
-
+@implementation Task
 
 @end

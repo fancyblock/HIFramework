@@ -11,6 +11,7 @@
 @implementation RenderCore
 
 static RenderCore* m_instance;
+static BOOL m_safeFlag = NO;
 
 
 /**
@@ -22,10 +23,31 @@ static RenderCore* m_instance;
 {
     if( m_instance == nil )
     {
+        m_safeFlag = YES;
         m_instance = [[RenderCore alloc] init];
+        m_safeFlag = NO;
     }
     
     return m_instance;
+}
+
+
+/**
+ * @desc    constructor
+ * @para    none
+ * @return  self
+ */
++ (id)alloc
+{
+    if( m_safeFlag == NO )
+    {
+        NSException* exception = [NSException exceptionWithName:@"Alloc Error" reason:@"RenderCore is a singleton , can not be alloc directly" userInfo:nil];
+        @throw exception;
+        
+        return nil;
+    }
+    
+    return [super alloc];
 }
 
 

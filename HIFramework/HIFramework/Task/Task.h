@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "../Events/TouchEvent.h"
+
 
 #define TASK_STATUS_IDLE        1
 #define TASK_STATUS_ADDING      2
@@ -34,6 +36,6 @@
 
 - (void)onDraw:(float)elapse;
 
-//TODO 
+- (BOOL)onTouchEvent:(NSArray*)events;
 
 @end

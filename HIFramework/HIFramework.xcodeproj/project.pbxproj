@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF4838381593890500529A53 /* TouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4838371593890500529A53 /* TouchEvent.m */; };
 		CF4C16F81563FE7B0078F4D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C16F71563FE7B0078F4D6 /* UIKit.framework */; };
 		CF4C16FA1563FE7B0078F4D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C16F91563FE7B0078F4D6 /* Foundation.framework */; };
 		CF4C16FC1563FE7B0078F4D6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C16FB1563FE7B0078F4D6 /* CoreGraphics.framework */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF4838361593890500529A53 /* TouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchEvent.h; path = Events/TouchEvent.h; sourceTree = "<group>"; };
+		CF4838371593890500529A53 /* TouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TouchEvent.m; path = Events/TouchEvent.m; sourceTree = "<group>"; };
 		CF4C16F31563FE7B0078F4D6 /* HIFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HIFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4C16F71563FE7B0078F4D6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CF4C16F91563FE7B0078F4D6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -73,6 +76,15 @@
 			name = Graphic;
 			sourceTree = "<group>";
 		};
+		CF4838341593888B00529A53 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				CF4838361593890500529A53 /* TouchEvent.h */,
+				CF4838371593890500529A53 /* TouchEvent.m */,
+			);
+			name = Events;
+			sourceTree = "<group>";
+		};
 		CF4C16E81563FE7B0078F4D6 = {
 			isa = PBXGroup;
 			children = (
@@ -106,11 +118,12 @@
 		CF4C16FD1563FE7B0078F4D6 /* HIFramework */ = {
 			isa = PBXGroup;
 			children = (
-				CF7B773E15907FE1006F03C6 /* Gui */,
 				CF7B773D15907FDB006F03C6 /* File */,
+				CF483820158E431A00529A53 /* Graphic */,
+				CF4838341593888B00529A53 /* Events */,
+				CF7B773E15907FE1006F03C6 /* Gui */,
 				CF7B773C15907FD5006F03C6 /* Sound */,
 				CF7B773B15907FBD006F03C6 /* Task */,
-				CF483820158E431A00529A53 /* Graphic */,
 				CF7E1DED15661E6C005D58C9 /* HIApp */,
 				CF4C17061563FE7B0078F4D6 /* HIAppDelegate.h */,
 				CF4C17071563FE7B0078F4D6 /* HIAppDelegate.m */,
@@ -249,6 +262,7 @@
 				CF7B773A15907F79006F03C6 /* RenderCore.m in Sources */,
 				CF7B774115908129006F03C6 /* TaskManager.m in Sources */,
 				CF7B774415908F23006F03C6 /* Task.m in Sources */,
+				CF4838381593890500529A53 /* TouchEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

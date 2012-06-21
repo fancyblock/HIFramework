@@ -128,7 +128,7 @@
     glLoadIdentity();
     
     // set the clear color
-    glClearColor( 0.2f, 0.2f, 0.2f, 1 );
+    glClearColor( 0.2f, 0.2f, 0.35f, 1 );
     
     // OpenGL settings
     glShadeModel( GL_SMOOTH );

@@ -11,7 +11,9 @@
 
 @interface TaskManager : NSObject
 {
-    //TODO 
+    NSMutableArray* m_taskList;
+    NSMutableArray* m_pendingTasks;
+    NSMutableArray* m_runningTasks;
 }
 
 + (TaskManager*)sharedInstance;
@@ -22,5 +24,13 @@
 - (BOOL)StartTask:(Task*)task;
 
 - (BOOL)StopTask:(Task*)task;
+
+- (void)Main:(float)elapsed;
+
+- (void)Draw:(float)elapsed;
+
+- (void)ProcessPending;
+
+- (void)RemoveAllTasks;
 
 @end

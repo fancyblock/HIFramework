@@ -38,4 +38,6 @@
 
 - (BOOL)onTouchEvent:(NSArray*)events;
 
+- (void)onDestory;
+
 @end

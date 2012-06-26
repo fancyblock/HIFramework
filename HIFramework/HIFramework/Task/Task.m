@@ -60,6 +60,7 @@
 - (void)onFrame:(float)elapse{}
 - (void)onDraw:(float)elapse{}
 - (BOOL)onTouchEvent:(NSArray*)events{ return NO; }
+- (void)onDestory{}
 
 
 @end

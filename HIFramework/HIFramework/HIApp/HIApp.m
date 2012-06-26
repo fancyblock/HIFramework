@@ -8,11 +8,14 @@
 
 #import "HIApp.h"
 #import "../Graphic/RenderCore.h"
+#import "../Task/TaskManager.h"
 
 
 @interface HIApp(private)
 
 - (void)setupOpenGL;
+- (void)frame:(float)dt;
+- (void)rander:(float)dt;
 
 @end
 
@@ -146,6 +149,26 @@
     
     // initial the render core
     [[RenderCore sharedInstance] Initial];
+}
+
+
+// frame update
+- (void)frame:(float)dt
+{
+    [[TaskManager sharedInstance] ProcessPending];
+    
+    //TODO  ui manager update
+    [[TaskManager sharedInstance] Main:dt];
+}
+
+
+// render update
+- (void)rander:(float)dt
+{
+    //TODO  renderCore
+    
+    [[TaskManager sharedInstance] Draw:dt];
+    //TODO  ui render
 }
 
 

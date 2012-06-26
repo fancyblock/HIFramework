@@ -33,4 +33,6 @@
 
 - (void)RemoveAllTasks;
 
+- (void)onTouchEvent:(NSArray*)events;
+
 @end

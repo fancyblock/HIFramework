@@ -218,6 +218,33 @@ static BOOL m_saftFlag = NO;
 
 
 /**
+ * @desc    inject the touch event to the game
+ * @para    events
+ * @return  none
+ */
+- (void)onTouchEvent:(NSArray*)events
+{
+    int i;
+    int count;
+    Task* task;
+    
+    count = [m_runningTasks count];
+    for( i = 0; i < count; i++ )
+    {
+        task = [m_runningTasks objectAtIndex:i];
+        
+        if( task.STATUS == TASK_STATUS_RUNNING )
+        {
+            if( [task onTouchEvent:events] == YES )
+            {
+                return;
+            }
+        }
+    }
+}
+
+
+/**
  * @desc    remove & clean all the tasks
  * @para    none
  * @return  none

@@ -29,7 +29,8 @@
     // create the game app
     m_gameApp = [[HIApp alloc] initWithOrientation:ORIENTATION_PORTRAIT deviceType:YES withFPS:30];
     
-    //TODO  ( set delegate or not ? )
+    // set delegate
+    m_gameApp.delegate = self;
     
     self.window.rootViewController = m_gameApp.viewController;
     [self.window makeKeyAndVisible];
@@ -77,5 +78,30 @@
     
     [m_gameApp release];
 }
+
+
+/**
+ * @desc    callback when game created
+ * @para    none
+ * @return  none
+ */
+- (void)GameCreate
+{
+    NSLog( @"------------ Game Created ------------" );
+    
+    //TODO 
+}
+
+
+/**
+ * @desc    callback when game destory
+ * @para    none
+ * @return  none
+ */
+- (void)GameDestory
+{
+    //TODO 
+}
+
 
 @end

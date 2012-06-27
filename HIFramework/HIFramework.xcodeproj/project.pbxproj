@@ -125,10 +125,11 @@
 				CF7B773C15907FD5006F03C6 /* Sound */,
 				CF7B773B15907FBD006F03C6 /* Task */,
 				CF7E1DED15661E6C005D58C9 /* HIApp */,
+				CF7E1DF015661F6B005D58C9 /* HIFramework.h */,
+				CF4C16FE1563FE7B0078F4D6 /* Supporting Files */,
+				CF6584C9159B5FC500BA3AC4 /* Demo */,
 				CF4C17061563FE7B0078F4D6 /* HIAppDelegate.h */,
 				CF4C17071563FE7B0078F4D6 /* HIAppDelegate.m */,
-				CF4C16FE1563FE7B0078F4D6 /* Supporting Files */,
-				CF7E1DF015661F6B005D58C9 /* HIFramework.h */,
 			);
 			path = HIFramework;
 			sourceTree = "<group>";
@@ -142,6 +143,13 @@
 				CF4C17051563FE7B0078F4D6 /* HIFramework-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CF6584C9159B5FC500BA3AC4 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Demo;
 			sourceTree = "<group>";
 		};
 		CF7B773B15907FBD006F03C6 /* Task */ = {

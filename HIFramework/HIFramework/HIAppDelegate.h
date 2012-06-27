@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HIFramework.h"
+#import "HIApp/HIApp.h"
 
-@interface HIAppDelegate : UIResponder <UIApplicationDelegate>
+@interface HIAppDelegate : UIResponder <UIApplicationDelegate, HIAppDelegate>
 {
     HIApp* m_gameApp;
     

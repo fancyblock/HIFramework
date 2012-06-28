@@ -125,7 +125,7 @@
 }
 
 
-// frame update
+// frame update (HIFramework)
 - (void)frame:(float)dt
 {
     [[TaskManager sharedInstance] ProcessPending];
@@ -135,7 +135,7 @@
 }
 
 
-// render update
+// render update (HIFramework)
 - (void)rander:(float)dt
 {
     //TODO  renderCore
@@ -171,11 +171,7 @@
  */
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-    glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT );
-    
-    //TODO 
-    
-    glFlush();
+    [[RenderCore sharedInstance] Render];
 }
 
 

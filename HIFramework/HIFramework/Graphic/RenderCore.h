@@ -14,9 +14,13 @@
 #define HI_OGL_VERSION  kEAGLRenderingAPIOpenGLES1
 
 
+
 @interface RenderCore : NSObject
 {
-    //TODO 
+    GLfloat* m_vertexBuffer;
+    GLfloat* m_colorBuffer;
+    GLfloat* m_textCoordBuffer;
+    GLushort* m_indexBuffer;
 }
 
 + (RenderCore*)sharedInstance;
@@ -24,6 +28,7 @@
 - (void)SetupOpenGL:(CGSize)size;
 - (void)Initial;
 - (void)Destory;
+- (void)Render;
 
 
 @end

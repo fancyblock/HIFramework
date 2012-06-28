@@ -21,6 +21,8 @@
     GLfloat* m_colorBuffer;
     GLfloat* m_textCoordBuffer;
     GLushort* m_indexBuffer;
+    
+    GLuint* m_textures;
 }
 
 + (RenderCore*)sharedInstance;

@@ -52,6 +52,44 @@ static BOOL m_safeFlag = NO;
 
 
 /**
+ * @desc    setup the openGL
+ * @para    size    viewport region
+ * @return  none
+ */
+- (void)SetupOpenGL:(CGSize)size
+{
+    // set view port
+    glViewport( 0, 0, size.width, size.height );
+    
+    // set projection type
+    glMatrixMode( GL_PROJECTION );
+    glLoadIdentity();
+    glOrthof( 0, size.width - 1, size.height - 1, 0, 0, Z_DEPTH );
+    
+    // reset model view matrix
+    glMatrixMode( GL_MODELVIEW );
+    glLoadIdentity();
+    
+    // set the clear color
+    glClearColor( 0.2f, 0.2f, 0.35f, 1 );
+    
+    // OpenGL settings
+    glShadeModel( GL_SMOOTH );
+    glEnable( GL_DEPTH_TEST );
+    glEnable( GL_TEXTURE_2D );
+    
+    glEnableClientState( GL_VERTEX_ARRAY );
+    glEnableClientState( GL_COLOR_ARRAY );
+    glEnableClientState( GL_TEXTURE_COORD_ARRAY );
+    
+    glActiveTexture( GL_TEXTURE0 );
+    
+    glEnable( GL_BLEND );
+    glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+}
+
+
+/**
  * @desc    alloc the memory for the buffers ( vertex, index, uv )
  * @para    none
  * @return  none

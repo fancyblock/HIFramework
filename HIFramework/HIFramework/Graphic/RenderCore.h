@@ -7,6 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GLKit/GLKit.h"
+#import "../HIApp/HIFDefines.h"
+
+
+#define HI_OGL_VERSION  kEAGLRenderingAPIOpenGLES1
+
 
 @interface RenderCore : NSObject
 {
@@ -15,6 +21,7 @@
 
 + (RenderCore*)sharedInstance;
 
+- (void)SetupOpenGL:(CGSize)size;
 - (void)Initial;
 - (void)Destory;
 

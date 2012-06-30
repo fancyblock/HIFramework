@@ -62,7 +62,9 @@
     
     m_glContext = [[[EAGLContext alloc] initWithAPI:HI_OGL_VERSION] autorelease];
     m_glView = [[GLKView alloc] initWithFrame:frame context:m_glContext];
-    m_glViewController = [[GLKViewController alloc] init];
+    m_glViewController = [[GLController alloc] init];
+    
+    m_glView.autoresizesSubviews = NO;
     
     m_glViewController.view = m_glView;
     m_glViewController.delegate = self;

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GLKit/GLKit.h"
 #import "HIFDefines.h"
+#import "GLController.h"
 
 // app delegate
 @protocol HIAppDelegate <NSObject>
@@ -22,7 +23,7 @@
 @interface HIApp : NSObject<GLKViewControllerDelegate, GLKViewDelegate>
 {
     // for OpenGL
-    GLKViewController* m_glViewController;
+    GLController* m_glViewController;
     GLKView* m_glView;
     EAGLContext* m_glContext;
     
@@ -33,7 +34,7 @@
     id<HIAppDelegate> m_delegate;
 }
 
-@property (nonatomic, retain)GLKViewController* viewController;
+@property (nonatomic, retain)GLController* viewController;
 @property (nonatomic, retain)id<HIAppDelegate> delegate;
 
 

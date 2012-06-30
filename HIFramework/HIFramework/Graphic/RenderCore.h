@@ -18,11 +18,11 @@
 @interface RenderCore : NSObject
 {
     GLfloat* m_vertexBuffer;
-    GLfloat* m_colorBuffer;
     GLfloat* m_textCoordBuffer;
     GLushort* m_indexBuffer;
     
     GLuint* m_textures;
+    int m_textureCount;
 }
 
 + (RenderCore*)sharedInstance;
@@ -31,6 +31,8 @@
 - (void)Initial;
 - (void)Destory;
 - (void)Render;
+
+- (BOOL)CreateTexture:(NSString*)picName;
 
 
 @end

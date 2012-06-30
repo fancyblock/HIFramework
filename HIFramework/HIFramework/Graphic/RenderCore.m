@@ -19,6 +19,13 @@
 #define Z_DEPTH             100.0f
 
 
+@interface RenderCore(private)
+
+//TODO 
+
+@end
+
+
 @implementation RenderCore
 
 static RenderCore* m_instance;
@@ -104,7 +111,6 @@ static BOOL m_safeFlag = NO;
     glEnable( GL_COLOR_LOGIC_OP );
     
     glEnableClientState( GL_VERTEX_ARRAY );
-    //glEnableClientState( GL_COLOR_ARRAY );
     glEnableClientState( GL_TEXTURE_COORD_ARRAY );
     
     glActiveTexture( GL_TEXTURE0 );
@@ -124,13 +130,17 @@ static BOOL m_safeFlag = NO;
     // create all the buffers
     m_vertexBuffer = (GLfloat*)malloc( MAX_VERTEX_NUM * COORD_PER_VERTEX * sizeof(GLfloat) );
     m_indexBuffer = (GLushort*)malloc( MAX_INDEX_NUM * sizeof(GLushort) );
-    m_colorBuffer = (GLfloat*)malloc( MAX_VERTEX_NUM * COORD_PER_COLOR * sizeof(GLfloat) );
     m_textCoordBuffer = (GLfloat*)malloc( MAX_VERTEX_NUM * COORD_PER_UV * sizeof(GLfloat) );
     
     // create textures
     m_textures = (GLuint*)malloc( MAX_TEXTURE_NUM * sizeof( GLuint ) );
     glGenTextures( MAX_TEXTURE_NUM, m_textures );
+    m_textureCount = 0;
     
+    //[TEMP]
+    [self CreateTexture:@"nackm.png"];
+    //glRotatef(30, 0, 0, 1);
+    //[TEMP]
 }
 
 
@@ -143,7 +153,6 @@ static BOOL m_safeFlag = NO;
 {
     free( m_vertexBuffer );
     free( m_indexBuffer );
-    free( m_colorBuffer );
     free( m_textCoordBuffer );
     
     glDeleteTextures( MAX_TEXTURE_NUM, m_textures );
@@ -164,38 +173,73 @@ static BOOL m_safeFlag = NO;
     
     //[TEMP]
     m_vertexBuffer[0] = 10.0f; m_vertexBuffer[1] = 10.0f; m_vertexBuffer[2] = 0.0f;
-    m_vertexBuffer[3] = 100.0f; m_vertexBuffer[4] = 10.0f; m_vertexBuffer[5] = 0.0f;
-    m_vertexBuffer[6] = 100.0f; m_vertexBuffer[7] = 100.0f; m_vertexBuffer[8] = 0.0f;
-    m_vertexBuffer[9] = 10.0f; m_vertexBuffer[10] = 100.0f; m_vertexBuffer[11] = 0.0f;
+    m_vertexBuffer[3] = 200.0f; m_vertexBuffer[4] = 10.0f; m_vertexBuffer[5] = 0.0f;
+    m_vertexBuffer[6] = 200.0f; m_vertexBuffer[7] = 200.0f; m_vertexBuffer[8] = 0.0f;
+    m_vertexBuffer[9] = 10.0f; m_vertexBuffer[10] = 200.0f; m_vertexBuffer[11] = 0.0f;
     
     m_indexBuffer[0] = 0; m_indexBuffer[1] = 1; m_indexBuffer[2] = 2;
     m_indexBuffer[3] = 0; m_indexBuffer[4] = 2; m_indexBuffer[5] = 3;
-    
-    m_colorBuffer[0] = 1.0f; m_colorBuffer[1] = 0.0f; m_colorBuffer[2] = 0.5f; m_colorBuffer[3] = 1.0f;
-    m_colorBuffer[4] = 1.0f; m_colorBuffer[5] = 0.0f; m_colorBuffer[6] = 0.5f; m_colorBuffer[7] = 1.0f;
-    m_colorBuffer[8] = 1.0f; m_colorBuffer[9] = 0.0f; m_colorBuffer[10] = 0.5f; m_colorBuffer[11] = 1.0f;
-    m_colorBuffer[12] = 1.0f; m_colorBuffer[13] = 0.0f; m_colorBuffer[14] = 0.5f; m_colorBuffer[15] = 1.0f;
     
     m_textCoordBuffer[0] = 0.0f; m_textCoordBuffer[1] = 0.0f;
     m_textCoordBuffer[2] = 1.0f; m_textCoordBuffer[3] = 0.0f;
     m_textCoordBuffer[4] = 1.0f; m_textCoordBuffer[5] = 1.0f;
     m_textCoordBuffer[6] = 0.0f; m_textCoordBuffer[7] = 1.0f;
     
-    glColor4f( 0.0f, 1.0f, 0.5f, 1.0f );
+    glColor4f( 1.0f, 1.0f, 1.0f, 1.0f );
     
-    // texture
     glBindTexture( GL_TEXTURE_2D, m_textures[0] );
-    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
-    glTexImage2D( GL_TEXTURE_2D, 0, GL_RGBA, 64, 64, 0, GL_RGBA, GL_UNSIGNED_SHORT_4_4_4_4, 0 );
     
     glVertexPointer( COORD_PER_VERTEX, GL_FLOAT, 0, m_vertexBuffer );
-    //glColorPointer( COORD_PER_COLOR, GL_FLOAT, 0, m_colorBuffer );
-    glTexCoordPointer( COORD_PER_UV, GL_UNSIGNED_SHORT, 0, m_textCoordBuffer );
+    glTexCoordPointer( COORD_PER_UV, GL_FLOAT, 0, m_textCoordBuffer );
     glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, (GLvoid*)m_indexBuffer );
     //[TEMP]
     
     glFlush();
 }
+
+
+/**
+ * @desc    create a OpenGL texture
+ * @para    image name ( already in app main bundle )
+ * @return  success or fail
+ */
+- (BOOL)CreateTexture:(NSString*)picName
+{
+    if( m_textureCount >= MAX_TEXTURE_NUM )
+    {
+        return NO;
+    }
+    
+    glBindTexture( GL_TEXTURE_2D, m_textures[m_textureCount] );
+    
+    // get the image
+    UIImage* pic = [UIImage imageNamed:picName];
+    CGSize size = pic.size;
+    
+    // judge if the size can be use for OpenGL
+    //TODO 
+    
+    GLubyte* buff = (GLubyte*)malloc( size.width * size.height * 4 );
+    CGContextRef imageContext = CGBitmapContextCreate( buff, size.width, size.height, 8, size.width * 4, CGColorSpaceCreateDeviceRGB(), kCGImageAlphaPremultipliedLast);
+    CGContextDrawImage(imageContext, CGRectMake(0.0, 0.0, size.width, size.height), pic.CGImage);
+    CGContextRelease(imageContext); 
+    
+    glTexImage2D( GL_TEXTURE_2D, 0, GL_RGBA, size.width, size.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, buff );
+    free( buff );
+    
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
+
+    m_textureCount++;
+    
+    return YES;
+}
+
+
+//------------------------------- private function -------------------------------
+
+
+//TODO 
 
 
 @end

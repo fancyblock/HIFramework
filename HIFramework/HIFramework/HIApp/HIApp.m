@@ -65,6 +65,16 @@
     m_glViewController = [[GLController alloc] init];
     
     m_glView.autoresizesSubviews = NO;
+    m_glView.autoresizingMask = UIViewAutoresizingNone;
+    
+    if( m_orientation == ORIENTATION_LANDSCAPE )
+    {
+        m_glViewController.CUR_ORIENTATION = UIInterfaceOrientationLandscapeLeft;
+    }
+    if( m_orientation == ORIENTATION_PORTRAIT )
+    {
+        m_glViewController.CUR_ORIENTATION = UIInterfaceOrientationPortrait;
+    }
     
     m_glViewController.view = m_glView;
     m_glViewController.delegate = self;

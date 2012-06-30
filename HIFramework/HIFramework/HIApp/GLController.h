@@ -9,5 +9,10 @@
 #import <GLKit/GLKit.h>
 
 @interface GLController : GLKViewController
+{
+    //TODO 
+}
+
+@property (nonatomic, readwrite) UIInterfaceOrientation CUR_ORIENTATION;
 
 @end

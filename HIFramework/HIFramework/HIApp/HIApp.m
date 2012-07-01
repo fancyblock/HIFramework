@@ -150,7 +150,7 @@
 // render update (HIFramework)
 - (void)rander:(float)dt
 {
-    //TODO  renderCore
+    [[RenderCore sharedInstance] Clear];
     
     [[TaskManager sharedInstance] Draw:dt];
     //TODO  ui render

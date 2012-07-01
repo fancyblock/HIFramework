@@ -19,6 +19,25 @@
 #define Z_DEPTH             100.0f
 
 
+@implementation TextureInfo
+
+@synthesize INDEX;
+@synthesize WIDTH;
+@synthesize HEIGHT;
+
+@end
+
+
+@implementation RenderChunk
+
+@synthesize TEXTURE_INDEX;
+@synthesize COLOR;
+@synthesize INDEX_OFFSET;
+@synthesize VERTEX_NUM;
+
+@end
+
+
 @interface RenderCore(private)
 
 //TODO 
@@ -136,10 +155,10 @@ static BOOL m_safeFlag = NO;
     m_textures = (GLuint*)malloc( MAX_TEXTURE_NUM * sizeof( GLuint ) );
     glGenTextures( MAX_TEXTURE_NUM, m_textures );
     m_textureCount = 0;
+    m_textureDic = [[NSMutableDictionary alloc] initWithCapacity:MAX_TEXTURE_NUM];
     
     //[TEMP]
     [self CreateTexture:@"nackm.png"];
-    //glRotatef(30, 0, 0, 1);
     //[TEMP]
 }
 
@@ -157,6 +176,8 @@ static BOOL m_safeFlag = NO;
     
     glDeleteTextures( MAX_TEXTURE_NUM, m_textures );
     free( m_textures );
+    [m_textureDic removeAllObjects];
+    [m_textureDic release];
 }
 
 
@@ -199,6 +220,28 @@ static BOOL m_safeFlag = NO;
 
 
 /**
+ * @desc    clear the render info from last frame
+ * @para    none
+ * @return  none
+ */
+- (void)Clear
+{
+    //TODO 
+}
+
+
+/**
+ * @desc    add a sprite to the render chunk
+ * @para    spr
+ * @return  none
+ */
+- (void)AddSprite:(Sprite*)spr
+{
+    //TODO 
+}
+
+
+/**
  * @desc    create a OpenGL texture
  * @para    image name ( already in app main bundle )
  * @return  success or fail
@@ -230,9 +273,34 @@ static BOOL m_safeFlag = NO;
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
 
+    // add to textures dictionary
+    TextureInfo* texInfo = [[TextureInfo alloc] init];
+    texInfo.WIDTH = size.width;
+    texInfo.HEIGHT = size.height;
+    texInfo.INDEX = m_textureCount;
+    [m_textureDic setObject:texInfo forKey:picName];
+    
     m_textureCount++;
     
     return YES;
+}
+
+
+/**
+ * @desc    judge if the texture exist
+ * @para    picName
+ * @return  YES or NO
+ */
+- (BOOL)IsTextureExist:(NSString*)picName
+{
+    TextureInfo* texInfo = [m_textureDic objectForKey:picName];
+    
+    if( texInfo != nil )
+    {
+        return YES;
+    }
+    
+    return NO;
 }
 
 

@@ -13,6 +13,8 @@
 
 
 #define HI_OGL_VERSION  kEAGLRenderingAPIOpenGLES1
+#define NO_TEXTURE      -1
+#define INIT_TEXTURE    -2
 
 
 // texture info struct
@@ -44,6 +46,17 @@
     GLuint* m_textures;
     int m_textureCount;
     NSMutableDictionary* m_textureDic;
+    
+    int m_curTextureIndex;
+    float m_curColorR;
+    float m_curColorG;
+    float m_curColorB;
+    float m_curColorA;
+    int m_curRenderChunkIndex;
+    int m_renderChunkCnt;
+    float m_depth;
+    int m_spriteNum;
+    NSMutableArray* m_renderChunks;
 }
 
 + (RenderCore*)sharedInstance;

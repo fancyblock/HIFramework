@@ -157,9 +157,10 @@ static BOOL m_safeFlag = NO;
     m_textureCount = 0;
     m_textureDic = [[NSMutableDictionary alloc] initWithCapacity:MAX_TEXTURE_NUM];
     
-    //[TEMP]
-    [self CreateTexture:@"nackm.png"];
-    //[TEMP]
+    // init render info
+    m_renderChunks = [[NSMutableArray alloc] init];
+    //TODO 
+    
 }
 
 
@@ -226,6 +227,16 @@ static BOOL m_safeFlag = NO;
  */
 - (void)Clear
 {
+    m_curColorR = 1.0f;
+    m_curColorG = 1.0f;
+    m_curColorB = 1.0f;
+    m_curColorA = 1.0f;
+    
+    m_curTextureIndex = INIT_TEXTURE;
+    
+    [m_renderChunks removeAllObjects];
+    m_renderChunkCnt = 0;
+    
     //TODO 
 }
 

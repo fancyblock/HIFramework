@@ -17,7 +17,6 @@
 		CF4FFE74159EEAB9001C8234 /* nackm.png in Resources */ = {isa = PBXBuildFile; fileRef = CF4FFE73159EEAB9001C8234 /* nackm.png */; };
 		CF4FFE78159F0B3B001C8234 /* GLController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4FFE77159F0B3B001C8234 /* GLController.m */; };
 		CF4FFE7B159F5B3E001C8234 /* Sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4FFE7A159F5B3E001C8234 /* Sprite.m */; };
-		CF5495C315A1FFAB004CE6A6 /* GraphicFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5495C215A1FFAB004CE6A6 /* GraphicFactory.m */; };
 		CF7B773A15907F79006F03C6 /* RenderCore.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7B773915907F79006F03C6 /* RenderCore.m */; };
 		CF7B774115908129006F03C6 /* TaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7B774015908129006F03C6 /* TaskManager.m */; };
 		CF7B774415908F23006F03C6 /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7B774315908F23006F03C6 /* Task.m */; };
@@ -45,8 +44,6 @@
 		CF4FFE77159F0B3B001C8234 /* GLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GLController.m; path = HIApp/GLController.m; sourceTree = "<group>"; };
 		CF4FFE79159F5B3E001C8234 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sprite.h; path = Graphic/Sprite.h; sourceTree = "<group>"; };
 		CF4FFE7A159F5B3E001C8234 /* Sprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sprite.m; path = Graphic/Sprite.m; sourceTree = "<group>"; };
-		CF5495C115A1FFAB004CE6A6 /* GraphicFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GraphicFactory.h; path = Graphic/GraphicFactory.h; sourceTree = "<group>"; };
-		CF5495C215A1FFAB004CE6A6 /* GraphicFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphicFactory.m; path = Graphic/GraphicFactory.m; sourceTree = "<group>"; };
 		CF7B773815907F79006F03C6 /* RenderCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RenderCore.h; path = Graphic/RenderCore.h; sourceTree = "<group>"; };
 		CF7B773915907F79006F03C6 /* RenderCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RenderCore.m; path = Graphic/RenderCore.m; sourceTree = "<group>"; };
 		CF7B773F15908129006F03C6 /* TaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskManager.h; path = Task/TaskManager.h; sourceTree = "<group>"; };
@@ -85,8 +82,6 @@
 				CF7B773915907F79006F03C6 /* RenderCore.m */,
 				CF4FFE79159F5B3E001C8234 /* Sprite.h */,
 				CF4FFE7A159F5B3E001C8234 /* Sprite.m */,
-				CF5495C115A1FFAB004CE6A6 /* GraphicFactory.h */,
-				CF5495C215A1FFAB004CE6A6 /* GraphicFactory.m */,
 			);
 			name = Graphic;
 			sourceTree = "<group>";
@@ -292,7 +287,6 @@
 				CF4838381593890500529A53 /* TouchEvent.m in Sources */,
 				CF4FFE78159F0B3B001C8234 /* GLController.m in Sources */,
 				CF4FFE7B159F5B3E001C8234 /* Sprite.m in Sources */,
-				CF5495C315A1FFAB004CE6A6 /* GraphicFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

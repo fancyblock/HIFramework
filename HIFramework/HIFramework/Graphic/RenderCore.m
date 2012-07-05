@@ -31,7 +31,10 @@
 @implementation RenderChunk
 
 @synthesize TEXTURE_INDEX;
-@synthesize COLOR;
+@synthesize COLOR_R;
+@synthesize COLOR_G;
+@synthesize COLOR_B;
+@synthesize COLOR_A;
 @synthesize INDEX_OFFSET;
 @synthesize VERTEX_NUM;
 

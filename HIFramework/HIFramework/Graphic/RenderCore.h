@@ -30,7 +30,10 @@
 @interface RenderChunk : NSObject
 
 @property (nonatomic, readwrite) int TEXTURE_INDEX;
-@property (nonatomic, readwrite) struct CGColor COLOR;
+@property (nonatomic, readwrite) float COLOR_R;
+@property (nonatomic, readwrite) float COLOR_G;
+@property (nonatomic, readwrite) float COLOR_B;
+@property (nonatomic, readwrite) float COLOR_A;
 @property (nonatomic, readwrite) int INDEX_OFFSET;
 @property (nonatomic, readwrite) int VERTEX_NUM;
 

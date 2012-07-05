@@ -113,9 +113,6 @@ static BOOL m_safeFlag = NO;
     // set the clear color
     glClearColor( 0.0f, 0.0f, 0.0f, 1 );
     
-    // set the clear depth
-    glClearDepthf( 1 );
-    
     // OpenGL settings
     /////////////////////
     
@@ -126,19 +123,17 @@ static BOOL m_safeFlag = NO;
     glFrontFace( GL_CW );
     glCullFace( GL_BACK );
     
-    glEnable( GL_DEPTH_TEST );
+    glDisable( GL_DEPTH_TEST );
     glEnable( GL_TEXTURE_2D );
     glEnable( GL_BLEND );
     glEnable( GL_ALPHA_TEST );
-    glEnable( GL_COLOR_LOGIC_OP );
+    glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
+    //glEnable( GL_COLOR_LOGIC_OP );
     
     glEnableClientState( GL_VERTEX_ARRAY );
     glEnableClientState( GL_TEXTURE_COORD_ARRAY );
     
     glActiveTexture( GL_TEXTURE0 );
-    
-    glEnable( GL_BLEND );
-    glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
 }
 
 
@@ -164,6 +159,7 @@ static BOOL m_safeFlag = NO;
     m_renderChunks = [[NSMutableArray alloc] init];
     //TODO 
     
+    [self CreateTexture:@"nackm.png"];
 }
 
 
@@ -197,10 +193,14 @@ static BOOL m_safeFlag = NO;
     //TODO 
     
     //[TEMP]
-    m_vertexBuffer[0] = 10.0f; m_vertexBuffer[1] = 10.0f; m_vertexBuffer[2] = 0.0f;
-    m_vertexBuffer[3] = 200.0f; m_vertexBuffer[4] = 10.0f; m_vertexBuffer[5] = 0.0f;
-    m_vertexBuffer[6] = 200.0f; m_vertexBuffer[7] = 200.0f; m_vertexBuffer[8] = 0.0f;
-    m_vertexBuffer[9] = 10.0f; m_vertexBuffer[10] = 200.0f; m_vertexBuffer[11] = 0.0f;
+    glMatrixMode( GL_MODELVIEW );
+    glLoadIdentity();
+    
+    float dep = -22.0f;
+    m_vertexBuffer[0] = 10.0f; m_vertexBuffer[1] = 10.0f; m_vertexBuffer[2] = dep;
+    m_vertexBuffer[3] = 200.0f; m_vertexBuffer[4] = 10.0f; m_vertexBuffer[5] = dep;
+    m_vertexBuffer[6] = 200.0f; m_vertexBuffer[7] = 200.0f; m_vertexBuffer[8] = dep;
+    m_vertexBuffer[9] = 10.0f; m_vertexBuffer[10] = 200.0f; m_vertexBuffer[11] = dep;
     
     m_indexBuffer[0] = 0; m_indexBuffer[1] = 1; m_indexBuffer[2] = 2;
     m_indexBuffer[3] = 0; m_indexBuffer[4] = 2; m_indexBuffer[5] = 3;
@@ -217,6 +217,12 @@ static BOOL m_safeFlag = NO;
     glVertexPointer( COORD_PER_VERTEX, GL_FLOAT, 0, m_vertexBuffer );
     glTexCoordPointer( COORD_PER_UV, GL_FLOAT, 0, m_textCoordBuffer );
     glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, (GLvoid*)m_indexBuffer );
+    
+    glColor4f( 1.0f, 0.1f, 0.5f, 1.0f );
+    glMatrixMode( GL_MODELVIEW );
+    glTranslatef( 80, 80, 0 );
+    glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, (GLvoid*)m_indexBuffer );
+    
     //[TEMP]
     
     glFlush();
@@ -240,7 +246,8 @@ static BOOL m_safeFlag = NO;
     [m_renderChunks removeAllObjects];
     m_renderChunkCnt = 0;
     
-    //TODO 
+    m_spriteNum = 0;
+    m_curRenderChunkIndex = -1;
 }
 
 

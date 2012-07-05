@@ -57,7 +57,6 @@
     float m_curColorA;
     int m_curRenderChunkIndex;
     int m_renderChunkCnt;
-    float m_depth;
     int m_spriteNum;
     NSMutableArray* m_renderChunks;
 }

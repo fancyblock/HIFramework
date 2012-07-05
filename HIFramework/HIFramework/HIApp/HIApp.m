@@ -165,6 +165,8 @@
 - (void)glkViewControllerUpdate:(GLKViewController *)controller
 {
     //TODO 
+    
+    //NSLog( @"update" );
 }
 
 
@@ -184,6 +186,8 @@
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
     [[RenderCore sharedInstance] Render];
+    
+    //NSLog( @"render" );
 }
 
 

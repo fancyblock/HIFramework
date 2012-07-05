@@ -17,6 +17,8 @@
 #define MAX_TEXTURE_NUM     32
 
 #define Z_DEPTH             100.0f
+#define Z_STEP              0.1f
+#define INIT_Z_VAL          -99.9f      // magic number
 
 
 @implementation TextureInfo
@@ -104,7 +106,7 @@ static BOOL m_safeFlag = NO;
     // set projection type
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
-    glOrthof( 0, size.width - 1, size.height - 1, 0, 0, Z_DEPTH );
+    glOrthof( 0, size.width, size.height, 0, 0, Z_DEPTH );
     
     // reset model view matrix
     glMatrixMode( GL_MODELVIEW );
@@ -112,6 +114,8 @@ static BOOL m_safeFlag = NO;
     
     // set the clear color
     glClearColor( 0.0f, 0.0f, 0.0f, 1 );
+    
+    glClearDepthf( Z_DEPTH );
     
     // OpenGL settings
     /////////////////////
@@ -123,12 +127,11 @@ static BOOL m_safeFlag = NO;
     glFrontFace( GL_CW );
     glCullFace( GL_BACK );
     
-    glDisable( GL_DEPTH_TEST );
+    glEnable( GL_DEPTH_TEST );
     glEnable( GL_TEXTURE_2D );
     glEnable( GL_BLEND );
     glEnable( GL_ALPHA_TEST );
     glBlendFunc( GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA );
-    //glEnable( GL_COLOR_LOGIC_OP );
     
     glEnableClientState( GL_VERTEX_ARRAY );
     glEnableClientState( GL_TEXTURE_COORD_ARRAY );
@@ -196,7 +199,7 @@ static BOOL m_safeFlag = NO;
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity();
     
-    float dep = -22.0f;
+    float dep = INIT_Z_VAL;
     m_vertexBuffer[0] = 10.0f; m_vertexBuffer[1] = 10.0f; m_vertexBuffer[2] = dep;
     m_vertexBuffer[3] = 200.0f; m_vertexBuffer[4] = 10.0f; m_vertexBuffer[5] = dep;
     m_vertexBuffer[6] = 200.0f; m_vertexBuffer[7] = 200.0f; m_vertexBuffer[8] = dep;
@@ -218,7 +221,12 @@ static BOOL m_safeFlag = NO;
     glTexCoordPointer( COORD_PER_UV, GL_FLOAT, 0, m_textCoordBuffer );
     glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, (GLvoid*)m_indexBuffer );
     
-    glColor4f( 1.0f, 0.1f, 0.5f, 1.0f );
+    glColor4f( 1.0f, 1.0f, 0.5f, 0.5f );
+    dep += Z_STEP;
+    m_vertexBuffer[2] = dep;
+    m_vertexBuffer[5] = dep;
+    m_vertexBuffer[8] = dep;
+    m_vertexBuffer[11] = dep;
     glMatrixMode( GL_MODELVIEW );
     glTranslatef( 80, 80, 0 );
     glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, (GLvoid*)m_indexBuffer );
@@ -248,6 +256,7 @@ static BOOL m_safeFlag = NO;
     
     m_spriteNum = 0;
     m_curRenderChunkIndex = -1;
+    m_curDepth = INIT_Z_VAL;
 }
 
 

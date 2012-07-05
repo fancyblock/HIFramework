@@ -59,6 +59,7 @@
     int m_renderChunkCnt;
     int m_spriteNum;
     NSMutableArray* m_renderChunks;
+    float m_curDepth;
 }
 
 + (RenderCore*)sharedInstance;

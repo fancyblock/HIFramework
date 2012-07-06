@@ -119,9 +119,7 @@ static BOOL m_safeFlag = NO;
     // shade model
     glShadeModel( GL_FLAT );
     // back face cull
-    glEnable( GL_CULL_FACE );
-    glFrontFace( GL_CW );
-    glCullFace( GL_BACK );
+    glDisable( GL_CULL_FACE );
     
     glEnable( GL_DEPTH_TEST );
     glEnable( GL_TEXTURE_2D );
@@ -257,10 +255,11 @@ static BOOL m_safeFlag = NO;
     m_curTextureIndex = INIT_TEXTURE;
     
     [m_renderChunks removeAllObjects];
-    m_renderChunkCnt = 0;
     
-    m_spriteNum = 0;
-    m_curRenderChunkIndex = -1;
+    m_curIndexOffset = 0;
+    m_curVertexOffset = 0;
+    m_curUVOffset = 0;
+    m_curColorOffset = 0;
     m_curDepth = INIT_Z_VAL;
 }
 
@@ -272,7 +271,27 @@ static BOOL m_safeFlag = NO;
  */
 - (void)AddSprite:(Sprite*)spr
 {
+    int texIdx = spr.TEXTURE_INDEX;
+    RenderChunk* rc = nil;
+    
+    if( texIdx != m_curTextureIndex )
+    {
+        rc = [[RenderChunk alloc] init];
+        rc.TEXTURE_INDEX = texIdx;
+        rc.INDEX_OFFSET = m_curIndexOffset;
+        rc.VERTEX_NUM = 0;
+        
+        m_curTextureIndex = texIdx;
+        [m_renderChunks addObject:rc];
+    }
+    
     //TODO 
+    
+    rc = [m_renderChunks lastObject];
+    rc.VERTEX_NUM += 6;                     // each facet contain two trangles ( 6 indexes )
+    
+    m_curDepth += Z_STEP;
+    
 }
 
 

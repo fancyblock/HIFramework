@@ -28,6 +28,7 @@
 @synthesize COLOR_G;
 @synthesize COLOR_B;
 @synthesize COLOR_A;
+@synthesize TEXTURE_INDEX;
 
 
 

@@ -48,9 +48,11 @@
     NSMutableDictionary* m_textureDic;
     
     int m_curTextureIndex;
-    int m_curRenderChunkIndex;
-    int m_renderChunkCnt;
-    int m_spriteNum;
+    int m_curIndexOffset;
+    int m_curVertexOffset;
+    int m_curUVOffset;
+    int m_curColorOffset;
+    
     NSMutableArray* m_renderChunks;
     float m_curDepth;
 }

@@ -42,6 +42,8 @@
 @property (nonatomic, readwrite) float COLOR_B;
 @property (nonatomic, readwrite) float COLOR_A;
 
+@property (nonatomic, readwrite) int TEXTURE_INDEX;
+
 
 //TODO 
 

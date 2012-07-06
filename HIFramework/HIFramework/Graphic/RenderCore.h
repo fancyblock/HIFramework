@@ -30,10 +30,6 @@
 @interface RenderChunk : NSObject
 
 @property (nonatomic, readwrite) int TEXTURE_INDEX;
-@property (nonatomic, readwrite) float COLOR_R;
-@property (nonatomic, readwrite) float COLOR_G;
-@property (nonatomic, readwrite) float COLOR_B;
-@property (nonatomic, readwrite) float COLOR_A;
 @property (nonatomic, readwrite) int INDEX_OFFSET;
 @property (nonatomic, readwrite) int VERTEX_NUM;
 
@@ -45,16 +41,13 @@
     GLfloat* m_vertexBuffer;
     GLfloat* m_textCoordBuffer;
     GLushort* m_indexBuffer;
+    GLfloat* m_colorBuffer;
     
     GLuint* m_textures;
     int m_textureCount;
     NSMutableDictionary* m_textureDic;
     
     int m_curTextureIndex;
-    float m_curColorR;
-    float m_curColorG;
-    float m_curColorB;
-    float m_curColorA;
     int m_curRenderChunkIndex;
     int m_renderChunkCnt;
     int m_spriteNum;

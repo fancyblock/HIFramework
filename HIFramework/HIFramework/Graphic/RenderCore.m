@@ -33,10 +33,6 @@
 @implementation RenderChunk
 
 @synthesize TEXTURE_INDEX;
-@synthesize COLOR_R;
-@synthesize COLOR_G;
-@synthesize COLOR_B;
-@synthesize COLOR_A;
 @synthesize INDEX_OFFSET;
 @synthesize VERTEX_NUM;
 
@@ -135,8 +131,10 @@ static BOOL m_safeFlag = NO;
     
     glEnableClientState( GL_VERTEX_ARRAY );
     glEnableClientState( GL_TEXTURE_COORD_ARRAY );
+    glEnableClientState( GL_COLOR_ARRAY );
     
     glActiveTexture( GL_TEXTURE0 );
+    
 }
 
 
@@ -151,6 +149,7 @@ static BOOL m_safeFlag = NO;
     m_vertexBuffer = (GLfloat*)malloc( MAX_VERTEX_NUM * COORD_PER_VERTEX * sizeof(GLfloat) );
     m_indexBuffer = (GLushort*)malloc( MAX_INDEX_NUM * sizeof(GLushort) );
     m_textCoordBuffer = (GLfloat*)malloc( MAX_VERTEX_NUM * COORD_PER_UV * sizeof(GLfloat) );
+    m_colorBuffer = (GLfloat*)malloc( MAX_VERTEX_NUM * COORD_PER_COLOR * sizeof(GLfloat) );
     
     // create textures
     m_textures = (GLuint*)malloc( MAX_TEXTURE_NUM * sizeof( GLuint ) );
@@ -162,6 +161,7 @@ static BOOL m_safeFlag = NO;
     m_renderChunks = [[NSMutableArray alloc] init];
     //TODO 
     
+    //[TEMP]
     [self CreateTexture:@"nackm.png"];
 }
 
@@ -176,6 +176,7 @@ static BOOL m_safeFlag = NO;
     free( m_vertexBuffer );
     free( m_indexBuffer );
     free( m_textCoordBuffer );
+    free( m_colorBuffer );
     
     glDeleteTextures( MAX_TEXTURE_NUM, m_textures );
     free( m_textures );
@@ -193,9 +194,13 @@ static BOOL m_safeFlag = NO;
 {
     glClear( GL_DEPTH_BUFFER_BIT | GL_COLOR_BUFFER_BIT );
     
-    //TODO 
+    // set buffer
+    glVertexPointer( COORD_PER_VERTEX, GL_FLOAT, 0, m_vertexBuffer );
+    glTexCoordPointer( COORD_PER_UV, GL_FLOAT, 0, m_textCoordBuffer );
+    glColorPointer( COORD_PER_COLOR, GL_FLOAT, 0, m_colorBuffer );
     
     //[TEMP]
+    glBindTexture( GL_TEXTURE_2D, m_textures[0] );
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity();
     
@@ -213,15 +218,20 @@ static BOOL m_safeFlag = NO;
     m_textCoordBuffer[4] = 1.0f; m_textCoordBuffer[5] = 1.0f;
     m_textCoordBuffer[6] = 0.0f; m_textCoordBuffer[7] = 1.0f;
     
-    glColor4f( 1.0f, 1.0f, 1.0f, 1.0f );
+    m_colorBuffer[0] = 1.0f;    m_colorBuffer[1] = 1.0f;    m_colorBuffer[2] = 1.0f;    m_colorBuffer[3] = 1.0f;
+    m_colorBuffer[4] = 1.0f;    m_colorBuffer[5] = 1.0f;    m_colorBuffer[6] = 1.0f;    m_colorBuffer[7] = 1.0f;
+    m_colorBuffer[8] = 1.0f;    m_colorBuffer[9] = 1.0f;    m_colorBuffer[10] = 1.0f;    m_colorBuffer[11] = 1.0f;
+    m_colorBuffer[12] = 1.0f;    m_colorBuffer[13] = 1.0f;    m_colorBuffer[14] = 1.0f;    m_colorBuffer[15] = 1.0f;
     
-    glBindTexture( GL_TEXTURE_2D, m_textures[0] );
-    
-    glVertexPointer( COORD_PER_VERTEX, GL_FLOAT, 0, m_vertexBuffer );
-    glTexCoordPointer( COORD_PER_UV, GL_FLOAT, 0, m_textCoordBuffer );
     glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, (GLvoid*)m_indexBuffer );
     
-    glColor4f( 1.0f, 1.0f, 0.5f, 0.5f );
+    //------
+    
+    m_colorBuffer[0] = 1.0f;    m_colorBuffer[1] = 1.0f;    m_colorBuffer[2] = 1.0f;    m_colorBuffer[3] = 0.5f;
+    m_colorBuffer[4] = 1.0f;    m_colorBuffer[5] = 1.0f;    m_colorBuffer[6] = 1.0f;    m_colorBuffer[7] = 0.5;
+    m_colorBuffer[8] = 1.0f;    m_colorBuffer[9] = 1.0f;    m_colorBuffer[10] = 1.0f;    m_colorBuffer[11] = 0.5f;
+    m_colorBuffer[12] = 1.0f;    m_colorBuffer[13] = 1.0f;    m_colorBuffer[14] = 1.0f;    m_colorBuffer[15] = 0.5f;
+    
     dep += Z_STEP;
     m_vertexBuffer[2] = dep;
     m_vertexBuffer[5] = dep;
@@ -229,8 +239,8 @@ static BOOL m_safeFlag = NO;
     m_vertexBuffer[11] = dep;
     glMatrixMode( GL_MODELVIEW );
     glTranslatef( 80, 80, 0 );
-    glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, (GLvoid*)m_indexBuffer );
     
+    glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, (GLvoid*)m_indexBuffer );
     //[TEMP]
     
     glFlush();
@@ -244,11 +254,6 @@ static BOOL m_safeFlag = NO;
  */
 - (void)Clear
 {
-    m_curColorR = 1.0f;
-    m_curColorG = 1.0f;
-    m_curColorB = 1.0f;
-    m_curColorA = 1.0f;
-    
     m_curTextureIndex = INIT_TEXTURE;
     
     [m_renderChunks removeAllObjects];

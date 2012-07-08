@@ -43,6 +43,7 @@
 @property (nonatomic, readwrite) float COLOR_A;
 
 @property (nonatomic, readwrite) int TEXTURE_INDEX;
+@property (nonatomic, retain) NSString* TEXTURE_NAME;
 
 
 //TODO 

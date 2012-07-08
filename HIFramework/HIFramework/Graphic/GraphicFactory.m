@@ -7,6 +7,7 @@
 //
 
 #import "GraphicFactory.h"
+#import "RenderCore.h"
 
 @implementation GraphicFactory
 
@@ -48,6 +49,35 @@ static BOOL m_safeFlag = NO;
     }
     
     return [super alloc];
+}
+
+
+/**
+ * @desc    create sprite
+ * @para    imgName
+ * @return  sprite
+ */
+- (Sprite*)CreateSprite:(NSString*)imgName
+{
+    Sprite* spr = [[Sprite alloc] init];
+    
+    int texIndex = NO_TEXTURE;
+    
+    if( [[RenderCore sharedInstance] IsTextureExist:imgName] == NO )
+    {
+        if( [[RenderCore sharedInstance] CreateTexture:imgName] == NO )
+        {
+            NSException* exception = [NSException exceptionWithName:@"Texture Create Error" reason:@"Create texture fail" userInfo:nil];
+            @throw exception;
+        }
+    }
+    
+    texIndex = [[RenderCore sharedInstance] GetTextureInfo:imgName].INDEX;
+    
+    spr.TEXTURE_INDEX = texIndex;
+    spr.TEXTURE_NAME = imgName;
+    
+    return spr;
 }
 
 

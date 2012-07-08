@@ -18,4 +18,7 @@
 + (GraphicFactory*)sharedInstance;
 
 
+- (Sprite*)CreateSprite:(NSString*)imgName;
+
+
 @end

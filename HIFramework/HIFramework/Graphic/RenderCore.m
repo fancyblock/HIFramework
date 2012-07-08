@@ -161,6 +161,7 @@ static BOOL m_safeFlag = NO;
     
     //[TEMP]
     [self CreateTexture:@"nackm.png"];
+    //[TEMP]
 }
 
 
@@ -197,49 +198,17 @@ static BOOL m_safeFlag = NO;
     glTexCoordPointer( COORD_PER_UV, GL_FLOAT, 0, m_textCoordBuffer );
     glColorPointer( COORD_PER_COLOR, GL_FLOAT, 0, m_colorBuffer );
     
-    //[TEMP]
-    glBindTexture( GL_TEXTURE_2D, m_textures[0] );
-    glMatrixMode( GL_MODELVIEW );
-    glLoadIdentity();
+    int count = [m_renderChunks count];
+    RenderChunk* chunk = nil;
     
-    float dep = INIT_Z_VAL;
-    m_vertexBuffer[0] = 10.0f; m_vertexBuffer[1] = 10.0f; m_vertexBuffer[2] = dep;
-    m_vertexBuffer[3] = 200.0f; m_vertexBuffer[4] = 10.0f; m_vertexBuffer[5] = dep;
-    m_vertexBuffer[6] = 200.0f; m_vertexBuffer[7] = 200.0f; m_vertexBuffer[8] = dep;
-    m_vertexBuffer[9] = 10.0f; m_vertexBuffer[10] = 200.0f; m_vertexBuffer[11] = dep;
-    
-    m_indexBuffer[0] = 0; m_indexBuffer[1] = 1; m_indexBuffer[2] = 2;
-    m_indexBuffer[3] = 0; m_indexBuffer[4] = 2; m_indexBuffer[5] = 3;
-    
-    m_textCoordBuffer[0] = 0.0f; m_textCoordBuffer[1] = 0.0f;
-    m_textCoordBuffer[2] = 1.0f; m_textCoordBuffer[3] = 0.0f;
-    m_textCoordBuffer[4] = 1.0f; m_textCoordBuffer[5] = 1.0f;
-    m_textCoordBuffer[6] = 0.0f; m_textCoordBuffer[7] = 1.0f;
-    
-    m_colorBuffer[0] = 1.0f;    m_colorBuffer[1] = 1.0f;    m_colorBuffer[2] = 1.0f;    m_colorBuffer[3] = 1.0f;
-    m_colorBuffer[4] = 1.0f;    m_colorBuffer[5] = 1.0f;    m_colorBuffer[6] = 1.0f;    m_colorBuffer[7] = 1.0f;
-    m_colorBuffer[8] = 1.0f;    m_colorBuffer[9] = 1.0f;    m_colorBuffer[10] = 1.0f;    m_colorBuffer[11] = 1.0f;
-    m_colorBuffer[12] = 1.0f;    m_colorBuffer[13] = 1.0f;    m_colorBuffer[14] = 1.0f;    m_colorBuffer[15] = 1.0f;
-    
-    glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, (GLvoid*)m_indexBuffer );
-    
-    //------
-    
-    m_colorBuffer[0] = 1.0f;    m_colorBuffer[1] = 1.0f;    m_colorBuffer[2] = 1.0f;    m_colorBuffer[3] = 0.5f;
-    m_colorBuffer[4] = 1.0f;    m_colorBuffer[5] = 1.0f;    m_colorBuffer[6] = 1.0f;    m_colorBuffer[7] = 0.5;
-    m_colorBuffer[8] = 1.0f;    m_colorBuffer[9] = 1.0f;    m_colorBuffer[10] = 1.0f;    m_colorBuffer[11] = 0.5f;
-    m_colorBuffer[12] = 1.0f;    m_colorBuffer[13] = 1.0f;    m_colorBuffer[14] = 1.0f;    m_colorBuffer[15] = 0.5f;
-    
-    dep += Z_STEP;
-    m_vertexBuffer[2] = dep;
-    m_vertexBuffer[5] = dep;
-    m_vertexBuffer[8] = dep;
-    m_vertexBuffer[11] = dep;
-    glMatrixMode( GL_MODELVIEW );
-    glTranslatef( 80, 80, 0 );
-    
-    glDrawElements( GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, (GLvoid*)m_indexBuffer );
-    //[TEMP]
+    // draw all the chunks
+    for( int i = 0; i < count; i++ )
+    {
+        chunk = [m_renderChunks objectAtIndex:i];
+        
+        glBindTexture( GL_TEXTURE_2D, chunk.TEXTURE_INDEX );
+        glDrawElements( GL_TRIANGLES, chunk.VERTEX_NUM, GL_UNSIGNED_SHORT, (GLvoid*)&m_indexBuffer[chunk.INDEX_OFFSET] );
+    }
     
     glFlush();
 }
@@ -283,9 +252,71 @@ static BOOL m_safeFlag = NO;
         
         m_curTextureIndex = texIdx;
         [m_renderChunks addObject:rc];
+        
+        [rc release];
     }
     
-    //TODO 
+    int idxStart = m_curVertexOffset / 3;
+    
+    // set the indexes
+    m_indexBuffer[m_curIndexOffset++] = idxStart;
+    m_indexBuffer[m_curIndexOffset++] = idxStart + 1;
+    m_indexBuffer[m_curIndexOffset++] = idxStart + 2;
+    
+    m_indexBuffer[m_curIndexOffset++] = idxStart;
+    m_indexBuffer[m_curIndexOffset++] = idxStart + 2;
+    m_indexBuffer[m_curIndexOffset++] = idxStart + 3;
+    
+    // set the vertexs
+    m_vertexBuffer[m_curVertexOffset++] = spr.X1;
+    m_vertexBuffer[m_curVertexOffset++] = spr.Y1;
+    m_vertexBuffer[m_curVertexOffset++] = m_curDepth;
+    
+    m_vertexBuffer[m_curVertexOffset++] = spr.X2;
+    m_vertexBuffer[m_curVertexOffset++] = spr.Y2;
+    m_vertexBuffer[m_curVertexOffset++] = m_curDepth;
+    
+    m_vertexBuffer[m_curVertexOffset++] = spr.X3;
+    m_vertexBuffer[m_curVertexOffset++] = spr.Y3;
+    m_vertexBuffer[m_curVertexOffset++] = m_curDepth;
+    
+    m_vertexBuffer[m_curVertexOffset++] = spr.X4;
+    m_vertexBuffer[m_curVertexOffset++] = spr.Y4;
+    m_vertexBuffer[m_curVertexOffset++] = m_curDepth;
+    
+    // set the uv
+    m_textCoordBuffer[m_curUVOffset++] = spr.U1;
+    m_textCoordBuffer[m_curUVOffset++] = spr.V1;
+    
+    m_textCoordBuffer[m_curUVOffset++] = spr.U2;
+    m_textCoordBuffer[m_curUVOffset++] = spr.V1;
+    
+    m_textCoordBuffer[m_curUVOffset++] = spr.U2;
+    m_textCoordBuffer[m_curUVOffset++] = spr.V2;
+    
+    m_textCoordBuffer[m_curUVOffset++] = spr.U1;
+    m_textCoordBuffer[m_curUVOffset++] = spr.V2;
+    
+    // set the color
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_R;
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_G;
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_B;
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_A;
+    
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_R;
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_G;
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_B;
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_A;
+    
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_R;
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_G;
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_B;
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_A;
+    
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_R;
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_G;
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_B;
+    m_colorBuffer[m_curColorOffset++] = spr.COLOR_A;
     
     rc = [m_renderChunks lastObject];
     rc.VERTEX_NUM += 6;                     // each facet contain two trangles ( 6 indexes )
@@ -316,13 +347,16 @@ static BOOL m_safeFlag = NO;
     // judge if the size can be use for OpenGL
     //TODO 
     
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    
     GLubyte* buff = (GLubyte*)malloc( size.width * size.height * 4 );
-    CGContextRef imageContext = CGBitmapContextCreate( buff, size.width, size.height, 8, size.width * 4, CGColorSpaceCreateDeviceRGB(), kCGImageAlphaPremultipliedLast);
+    CGContextRef imageContext = CGBitmapContextCreate( buff, size.width, size.height, 8, size.width * 4, colorSpace, kCGImageAlphaPremultipliedLast);
     CGContextDrawImage(imageContext, CGRectMake(0.0, 0.0, size.width, size.height), pic.CGImage);
     CGContextRelease(imageContext); 
     
     glTexImage2D( GL_TEXTURE_2D, 0, GL_RGBA, size.width, size.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, buff );
     free( buff );
+    free( colorSpace );
     
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
@@ -334,7 +368,11 @@ static BOOL m_safeFlag = NO;
     texInfo.INDEX = m_textureCount;
     [m_textureDic setObject:texInfo forKey:picName];
     
+    [texInfo release];
+    
     m_textureCount++;
+    
+    glBindTexture( GL_TEXTURE_2D, 0 );
     
     return YES;
 }
@@ -355,6 +393,19 @@ static BOOL m_safeFlag = NO;
     }
     
     return NO;
+}
+
+
+/**
+ * @desc    return the texture info 
+ * @para    picName 
+ * @return  texture info struct
+ */
+- (TextureInfo*)GetTextureInfo:(NSString*)picName
+{
+    TextureInfo* texInfo = [m_textureDic objectForKey:picName];
+    
+    return texInfo;
 }
 
 

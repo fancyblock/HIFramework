@@ -68,6 +68,7 @@
 - (BOOL)CreateTexture:(NSString*)picName;
 - (BOOL)IsTextureExist:(NSString*)picName;
 - (void)AddSprite:(Sprite*)spr;
+- (TextureInfo*)GetTextureInfo:(NSString*)picName;
 
 
 @end

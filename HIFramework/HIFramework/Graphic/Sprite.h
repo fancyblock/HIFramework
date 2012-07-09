@@ -46,7 +46,13 @@
 @property (nonatomic, retain) NSString* TEXTURE_NAME;
 
 
-//TODO 
+- (void)Draw;
+- (void)DrawAt:(CGPoint)pt;
+
+- (void)SetAnchor:(CGPoint)anchor;
+- (void)SetUVFrom:(CGPoint)uvLeftTop to:(CGPoint)uvRightDown;
+- (void)SetUVAt:(CGPoint)uvLeftTop withSize:(CGPoint)size;
+- (void)SetSize:(CGPoint)size;
 
 
 @end

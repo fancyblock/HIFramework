@@ -7,6 +7,7 @@
 //
 
 #import "HIAppDelegate.h"
+#import "Demo/TestTask.h"
 
 
 @implementation HIAppDelegate
@@ -29,8 +30,10 @@
     // create the game app
     m_gameApp = [[HIApp alloc] initWithOrientation:ORIENTATION_PORTRAIT deviceType:YES withFPS:30];
     
-    // set delegate
-    m_gameApp.delegate = self;
+    // init the application
+    TestTask* testTask = [[TestTask alloc] init];
+    [testTask Start];
+    [testTask release];
     
     self.window.rootViewController = m_gameApp.viewController;
     [self.window makeKeyAndVisible];
@@ -77,30 +80,6 @@
      */
     
     [m_gameApp release];
-}
-
-
-/**
- * @desc    callback when game created
- * @para    none
- * @return  none
- */
-- (void)GameCreate
-{
-    NSLog( @"------------ Game Created ------------" );
-    
-    //TODO 
-}
-
-
-/**
- * @desc    callback when game destory
- * @para    none
- * @return  none
- */
-- (void)GameDestory
-{
-    //TODO 
 }
 
 

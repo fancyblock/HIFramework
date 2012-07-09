@@ -15,7 +15,7 @@
 
 - (void)setupOpenGL;
 - (void)frame:(float)dt;
-- (void)rander:(float)dt;
+- (void)render:(float)dt;
 
 @end
 
@@ -148,7 +148,7 @@
 
 
 // render update (HIFramework)
-- (void)rander:(float)dt
+- (void)render:(float)dt
 {
     [[RenderCore sharedInstance] Clear];
     
@@ -164,9 +164,7 @@
  */
 - (void)glkViewControllerUpdate:(GLKViewController *)controller
 {
-    //TODO 
-    
-    //NSLog( @"update" );
+    [self frame:0.0f];          //[TEMP]    elapse time calculation unfinish
 }
 
 
@@ -185,9 +183,9 @@
  */
 - (void)glkView:(GLKView *)view drawInRect:(CGRect)rect
 {
-    [[RenderCore sharedInstance] Render];
+    [self render:0.0f];         //[TEMP]     elapse time calculation unfinish
     
-    //NSLog( @"render" );
+    [[RenderCore sharedInstance] Render];
 }
 
 

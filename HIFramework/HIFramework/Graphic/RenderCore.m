@@ -158,10 +158,6 @@ static BOOL m_safeFlag = NO;
     // init render info
     m_renderChunks = [[NSMutableArray alloc] init];
     //TODO 
-    
-    //[TEMP]
-    [self CreateTexture:@"nackm.png"];
-    //[TEMP]
 }
 
 
@@ -206,7 +202,7 @@ static BOOL m_safeFlag = NO;
     {
         chunk = [m_renderChunks objectAtIndex:i];
         
-        glBindTexture( GL_TEXTURE_2D, chunk.TEXTURE_INDEX );
+        glBindTexture( GL_TEXTURE_2D, m_textures[chunk.TEXTURE_INDEX] );
         glDrawElements( GL_TRIANGLES, chunk.VERTEX_NUM, GL_UNSIGNED_SHORT, (GLvoid*)&m_indexBuffer[chunk.INDEX_OFFSET] );
     }
     

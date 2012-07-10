@@ -48,11 +48,14 @@
 
 - (void)Draw;
 - (void)DrawAt:(CGPoint)pt;
+- (void)DrawAt:(CGPoint)pt withSize:(CGPoint)size;
+- (void)DrawAt:(CGPoint)pt withAngle:(float)angle;
+- (void)DrawAt:(CGPoint)pt withSize:(CGPoint)size andAngle:(float)angle;
 
 - (void)SetAnchor:(CGPoint)anchor;
 - (void)SetUVFrom:(CGPoint)uvLeftTop to:(CGPoint)uvRightDown;
 - (void)SetUVAt:(CGPoint)uvLeftTop withSize:(CGPoint)size;
 - (void)SetSize:(CGPoint)size;
-
+- (void)SetColorR:(float)r andG:(float)g andB:(float)b andAlpha:(float)alpha;
 
 @end

@@ -26,8 +26,10 @@
 }
 
 - (void)onDraw:(float)elapse
-{
-    [m_spr DrawAt:CGPointMake(33, 44)];
+{    
+    [m_spr SetAnchor:CGPointMake(0.5f, 0.5f)];
+
+    [m_spr DrawAt:CGPointMake(150, 150) withSize:CGPointMake(200, 200) andAngle:3.14f];
 }
 
 

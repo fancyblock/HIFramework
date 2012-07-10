@@ -62,8 +62,8 @@
  */
 - (void)Draw
 {
-    self.X1 = m_x - m_anchorX;
-    self.Y1 = m_y - m_anchorX;
+    self.X1 = m_x - ( m_anchorX * m_width );
+    self.Y1 = m_y - ( m_anchorY * m_height );
     
     self.X3 = self.X1 + m_width;
     self.Y3 = self.Y1 + m_height;
@@ -85,8 +85,8 @@
  */
 - (void)DrawAt:(CGPoint)pt
 {
-    self.X1 = pt.x - m_anchorX;
-    self.Y1 = pt.y - m_anchorX;
+    self.X1 = pt.x - ( m_anchorX * m_width );
+    self.Y1 = pt.y - ( m_anchorY * m_height );
     
     self.X3 = self.X1 + m_width;
     self.Y3 = self.Y1 + m_height;
@@ -101,7 +101,145 @@
 }
 
 
-//TODO
+/**
+ * @desc    draw the sprite at pt position with specific size
+ * @para    pt
+ * @para    size
+ * @return  none
+ */
+- (void)DrawAt:(CGPoint)pt withSize:(CGPoint)size
+{
+    self.X1 = pt.x - ( m_anchorX * size.x );
+    self.Y1 = pt.y - ( m_anchorY * size.y );
+    
+    self.X3 = self.X1 + size.x;
+    self.Y3 = self.Y1 + size.y;
+    
+    self.X2 = self.X3;
+    self.Y2 = self.Y1;
+    
+    self.X4 = self.X1;
+    self.Y4 = self.Y3;
+    
+    [[RenderCore sharedInstance] AddSprite:self];
+}
+
+
+/**
+ * @desc    draw the sprite at pt position with angle
+ * @para    pt
+ * @para    angle
+ * @return  none
+ */
+- (void)DrawAt:(CGPoint)pt withAngle:(float)angle
+{
+    float anchorX = m_anchorX * m_width;
+    float anchorY = m_anchorY * m_height;
+    
+    self.X1 = -anchorX;
+    self.Y1 = -anchorY;
+    
+    self.X3 = m_width - anchorX;
+    self.Y3 = m_height - anchorY;
+    
+    self.X2 = self.X3;
+    self.Y2 = self.Y1;
+    
+    self.X4 = self.X1;
+    self.Y4 = self.Y3;
+    
+    //rotate
+    float cosC = cosf( angle );
+    float sinC = sinf( angle );
+    float newX;
+    float newY;
+    newX = self.X1 * cosC - self.Y1 * sinC;
+    newY = self.X1 * sinC + self.Y1 * cosC;
+    self.X1 = newX;
+    self.Y1 = newY;
+    newX = self.X2 * cosC - self.Y2 * sinC;
+    newY = self.X2 * sinC + self.Y2 * cosC;
+    self.X2 = newX;
+    self.Y2 = newY;
+    newX = self.X3 * cosC - self.Y3 * sinC;
+    newY = self.X3 * sinC + self.Y3 * cosC;
+    self.X3 = newX;
+    self.Y3 = newY;
+    newX = self.X4 * cosC - self.Y4 * sinC;
+    newY = self.X4 * sinC + self.Y4 * cosC;
+    self.X4 = newX;
+    self.Y4 = newY;
+    
+    self.X1 += pt.x;
+    self.Y1 += pt.y;
+    self.X2 += pt.x;
+    self.Y2 += pt.y;
+    self.X3 += pt.x;
+    self.Y3 += pt.y;
+    self.X4 += pt.x;
+    self.Y4 += pt.y;
+    
+    [[RenderCore sharedInstance] AddSprite:self];
+}
+
+
+/**
+ * @desc    draw the sprite at pt position with specific size and angle
+ * @para    pt
+ * @para    size
+ * @para    angle
+ * @return  none
+ */
+- (void)DrawAt:(CGPoint)pt withSize:(CGPoint)size andAngle:(float)angle
+{
+    float anchorX = m_anchorX * size.x;
+    float anchorY = m_anchorY * size.y;
+    
+    self.X1 = -anchorX;
+    self.Y1 = -anchorY;
+    
+    self.X3 = size.x - anchorX;
+    self.Y3 = size.y - anchorY;
+    
+    self.X2 = self.X3;
+    self.Y2 = self.Y1;
+    
+    self.X4 = self.X1;
+    self.Y4 = self.Y3;
+    
+    //rotate
+    float cosC = cosf( angle );
+    float sinC = sinf( angle );
+    float newX;
+    float newY;
+    newX = self.X1 * cosC - self.Y1 * sinC;
+    newY = self.X1 * sinC + self.Y1 * cosC;
+    self.X1 = newX;
+    self.Y1 = newY;
+    newX = self.X2 * cosC - self.Y2 * sinC;
+    newY = self.X2 * sinC + self.Y2 * cosC;
+    self.X2 = newX;
+    self.Y2 = newY;
+    newX = self.X3 * cosC - self.Y3 * sinC;
+    newY = self.X3 * sinC + self.Y3 * cosC;
+    self.X3 = newX;
+    self.Y3 = newY;
+    newX = self.X4 * cosC - self.Y4 * sinC;
+    newY = self.X4 * sinC + self.Y4 * cosC;
+    self.X4 = newX;
+    self.Y4 = newY;
+    
+    self.X1 += pt.x;
+    self.Y1 += pt.y;
+    self.X2 += pt.x;
+    self.Y2 += pt.y;
+    self.X3 += pt.x;
+    self.Y3 += pt.y;
+    self.X4 += pt.x;
+    self.Y4 += pt.y;
+    
+    [[RenderCore sharedInstance] AddSprite:self];
+}
 
 
 /**
@@ -111,8 +249,12 @@
  */
 - (void)SetAnchor:(CGPoint)anchor
 {
-    m_anchorX = anchor.x;
-    m_anchorY = anchor.y;
+    if( anchor.x >= 0.0f && anchor.x <= 1.0f &&
+       anchor.y >= 0.0f && anchor.y <= 1.0f )
+    {
+        m_anchorX = anchor.x;
+        m_anchorY = anchor.y;
+    }
 }
 
 
@@ -166,6 +308,23 @@
 {
     m_width = size.x;
     m_height = size.y;
+}
+
+
+/**
+ * @desc    set the tint color
+ * @para    r
+ * @para    g
+ * @para    b
+ * @para    alpha
+ * @return  none
+ */
+- (void)SetColorR:(float)r andG:(float)g andB:(float)b andAlpha:(float)alpha
+{
+    self.COLOR_R = r;
+    self.COLOR_G = g;
+    self.COLOR_B = b;
+    self.COLOR_A = alpha;
 }
 
 

@@ -27,7 +27,7 @@
     GLKView* m_glView;
     EAGLContext* m_glContext;
     
-    BOOL m_isIphone;                // is iPhone or iPad app
+    int m_deviceType;                // is iPhone or iPad app
     int m_orientation;
     int m_fps;
     
@@ -38,7 +38,7 @@
 @property (nonatomic, retain)id<HIAppDelegate> delegate;
 
 
-- (id)initWithOrientation:(int)orientation deviceType:(BOOL)isIphone withFPS:(int)fps;
+- (id)initWithOrientation:(int)orientation deviceType:(int)type withFPS:(int)fps;
 
 
 @end

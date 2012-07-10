@@ -28,7 +28,7 @@
     // Override point for customization after application launch.
     
     // create the game app
-    m_gameApp = [[HIApp alloc] initWithOrientation:ORIENTATION_PORTRAIT deviceType:YES withFPS:30];
+    m_gameApp = [[HIApp alloc] initWithOrientation:ORIENTATION_PORTRAIT deviceType:DEVICE_IPHONE withFPS:30];
     
     // init the application
     TestTask* testTask = [[TestTask alloc] init];

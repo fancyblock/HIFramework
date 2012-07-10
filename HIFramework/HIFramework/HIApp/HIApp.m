@@ -38,11 +38,12 @@
     CGRect frame;
     if( m_orientation == ORIENTATION_LANDSCAPE )
     {
-        if( m_isIphone == YES )
+        if( m_deviceType == DEVICE_IPHONE )
         {
             frame = CGRectMake( 0, 0, IPHONE_SCREEN_HEIGHT, IPHONE_SCREEN_WIDTH );
         }
-        else 
+        
+        if( m_deviceType == DEVICE_IPAD )
         {
             frame = CGRectMake( 0, 0, IPAD_SCREEN_HEIGHT, IPAD_SCREEN_WIDTH );
         }
@@ -50,11 +51,12 @@
     
     if( m_orientation == ORIENTATION_PORTRAIT )
     {
-        if( m_isIphone == YES )
+        if( m_deviceType == DEVICE_IPHONE )
         {
             frame = CGRectMake( 0, 0, IPHONE_SCREEN_WIDTH, IPHONE_SCREEN_HEIGHT );
         }
-        else 
+        
+        if( m_deviceType == DEVICE_IPAD )
         {
             frame = CGRectMake( 0, 0, IPAD_SCREEN_WIDTH, IPAD_SCREEN_HEIGHT );
         }
@@ -95,10 +97,10 @@
  * @para    fps
  * @return  self
  */
-- (id)initWithOrientation:(int)orientation deviceType:(BOOL)isIphone withFPS:(int)fps
+- (id)initWithOrientation:(int)orientation deviceType:(int)type withFPS:(int)fps
 {
     m_orientation = orientation;
-    m_isIphone = isIphone;
+    m_deviceType = type;
     m_fps = fps;
     
     [self init];

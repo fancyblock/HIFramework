@@ -12,6 +12,9 @@
 #define ORIENTATION_PORTRAIT    0
 #define ORIENTATION_LANDSCAPE   1
 
+#define DEVICE_IPHONE           2
+#define DEVICE_IPAD             3
+
 #define IPHONE_SCREEN_WIDTH     320
 #define IPHONE_SCREEN_HEIGHT    480
 

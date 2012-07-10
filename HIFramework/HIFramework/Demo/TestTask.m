@@ -15,8 +15,6 @@
     m_spr = [[GraphicFactory sharedInstance] CreateSprite:@"nackm.png"];
     [m_spr SetUVFrom:CGPointMake(0, 0) to:CGPointMake(1, 1)];
     [m_spr SetSize:CGPointMake(100, 100)];
-    
-    
 }
 
 - (void)onEnd{}

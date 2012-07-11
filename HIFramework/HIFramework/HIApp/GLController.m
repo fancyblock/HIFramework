@@ -13,7 +13,7 @@
 
 @interface GLController (private)
 
-- (void)injectTouches:(NSMutableArray*)touches;
+- (void)injectTouches:(NSSet*)touches withType:(int)type;
 
 @end
 
@@ -52,23 +52,7 @@
 
 
 // inject the touch events to the ui system & task system
-- (void)injectTouches:(NSMutableArray*)touches
-{
-    if( [[UIManager sharedInstance] onTouchEvent:touches] == NO )
-    {
-        [[TaskManager sharedInstance] onTouchEvent:touches];
-    }
-    
-    [touches removeAllObjects];
-    [touches release];
-}
-
-
-//---------------------------------------- touch events ----------------------------------------
-
-
-// touch begin
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)injectTouches:(NSSet*)touches withType:(int)type
 {
     NSArray* touchList = [touches allObjects];
     NSMutableArray* hiTouchList = [[NSMutableArray alloc] init];
@@ -84,26 +68,43 @@
         
         evt.X = pt.x;
         evt.Y = pt.y;
-        evt.TOUCH_TYPE = TOUCH;
+        evt.TOUCH_TYPE = type;
         
         [hiTouchList addObject:evt];
+        [evt release];
     }
     
-    [self injectTouches:hiTouchList];
+    if( [[UIManager sharedInstance] onTouchEvent:hiTouchList] == NO )
+    {
+        [[TaskManager sharedInstance] onTouchEvent:hiTouchList];
+    }
+    
+    [hiTouchList removeAllObjects];
+    [hiTouchList release];
+}
+
+
+//---------------------------------------- touch events ----------------------------------------
+
+
+// touch begin
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self injectTouches:touches withType:TOUCH];
 }
 
 
 // touch moved
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    //TODO 
+    [self injectTouches:touches withType:MOVE];
 }
 
 
 // touch ended
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    //TODO 
+    [self injectTouches:touches withType:UNTOUCH];
 }
 
 

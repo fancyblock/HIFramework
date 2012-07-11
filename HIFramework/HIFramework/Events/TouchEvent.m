@@ -10,8 +10,8 @@
 
 @implementation TouchEvent
 
-@synthesize _x;
-@synthesize _y;
-@synthesize _type;
+@synthesize X;
+@synthesize Y;
+@synthesize TOUCH_TYPE;
 
 @end

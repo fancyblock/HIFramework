@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "../Events/TouchEvent.h"
+#import "TouchEvent.h"
 
 
 #define TASK_STATUS_IDLE        1

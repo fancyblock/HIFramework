@@ -7,8 +7,8 @@
 //
 
 #import "HIApp.h"
-#import "../Graphic/RenderCore.h"
-#import "../Task/TaskManager.h"
+#import "RenderCore.h"
+#import "TaskManager.h"
 
 
 @interface HIApp(private)

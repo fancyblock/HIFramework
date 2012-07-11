@@ -11,9 +11,13 @@
 
 #import "HIApp/HIFDefines.h"
 #import "HIApp/HIApp.h"
+
 #import "Graphic/RenderCore.h"
 #import "Graphic/GraphicFactory.h"
+
 #import "Task/TaskManager.h"
 #import "Task/Task.h"
+
+#import "Gui/UIManager.h"
 
 #endif

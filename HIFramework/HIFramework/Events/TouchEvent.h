@@ -15,12 +15,9 @@
 
 
 @interface TouchEvent : NSObject
-{
-    //TODO 
-}
 
-@property (nonatomic, readwrite) int _type;
-@property (nonatomic, readwrite) int _x;
-@property (nonatomic, readwrite) int _y;
+@property (nonatomic, readwrite) int TOUCH_TYPE;
+@property (nonatomic, readwrite) float X;
+@property (nonatomic, readwrite) float Y;
 
 @end

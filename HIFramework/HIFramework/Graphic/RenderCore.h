@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GLKit/GLKit.h"
-#import "../HIApp/HIFDefines.h"
+#import "HIFDefines.h"
 #import "Sprite.h"
 
 

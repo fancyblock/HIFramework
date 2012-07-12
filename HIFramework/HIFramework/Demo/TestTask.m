@@ -35,14 +35,14 @@
 {
     if( [events count] > 0 )
     {
-        NSLog( [NSString stringWithFormat:@"Touch Cnt: %d", [events count]] );
+        NSLog( @"Touch Cnt: %d", [events count] );
     }
     
     for( int i = 0; i < [events count]; i++ )
     {
         TouchEvent* evt = [events objectAtIndex:i];
         
-        NSLog( [NSString stringWithFormat:@"%.2f , %.2f", evt.X, evt.Y] );
+        NSLog( @"%.2f , %.2f", evt.X, evt.Y );
     }
     
     return NO; 

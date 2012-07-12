@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF30A79315AF340200AAE45D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF30A79215AF340200AAE45D /* OpenAL.framework */; };
+		CF30A79615AF340D00AAE45D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF30A79515AF340D00AAE45D /* AudioToolbox.framework */; };
 		CF4838381593890500529A53 /* TouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4838371593890500529A53 /* TouchEvent.m */; };
 		CF4C16F81563FE7B0078F4D6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C16F71563FE7B0078F4D6 /* UIKit.framework */; };
 		CF4C16FA1563FE7B0078F4D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4C16F91563FE7B0078F4D6 /* Foundation.framework */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF30A79215AF340200AAE45D /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		CF30A79515AF340D00AAE45D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CF4838361593890500529A53 /* TouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchEvent.h; path = Events/TouchEvent.h; sourceTree = "<group>"; };
 		CF4838371593890500529A53 /* TouchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TouchEvent.m; path = Events/TouchEvent.m; sourceTree = "<group>"; };
 		CF4C16F31563FE7B0078F4D6 /* HIFramework.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HIFramework.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +80,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF30A79615AF340D00AAE45D /* AudioToolbox.framework in Frameworks */,
+				CF30A79315AF340200AAE45D /* OpenAL.framework in Frameworks */,
 				CF7E1DEF15661E9A005D58C9 /* GLKit.framework in Frameworks */,
 				CF7E1DEC15661E12005D58C9 /* OpenGLES.framework in Frameworks */,
 				CF4C16F81563FE7B0078F4D6 /* UIKit.framework in Frameworks */,
@@ -131,6 +137,8 @@
 		CF4C16F61563FE7B0078F4D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CF30A79515AF340D00AAE45D /* AudioToolbox.framework */,
+				CF30A79215AF340200AAE45D /* OpenAL.framework */,
 				CF7E1DEE15661E9A005D58C9 /* GLKit.framework */,
 				CF7E1DEB15661E12005D58C9 /* OpenGLES.framework */,
 				CF4C16F71563FE7B0078F4D6 /* UIKit.framework */,

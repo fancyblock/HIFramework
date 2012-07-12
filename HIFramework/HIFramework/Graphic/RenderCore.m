@@ -41,7 +41,8 @@
 
 @interface RenderCore(private)
 
-//TODO 
+- (BOOL)isImgSizeLegal:(CGSize)size;
+- (UIImage*)reviseImage:(UIImage*)img scaleBigger:(BOOL)bigger;
 
 @end
 
@@ -340,8 +341,13 @@ static BOOL m_safeFlag = NO;
     UIImage* pic = [UIImage imageNamed:picName];
     CGSize size = pic.size;
     
-    // judge if the size can be use for OpenGL
-    //TODO 
+    // if the bitmap size if fit to OpenGL texture size ( 2^N x 2^N )
+    if( [self isImgSizeLegal:size] == NO )
+    {
+        UIImage* newPic = [self reviseImage:pic scaleBigger:YES];
+        [pic release];
+        pic = newPic;
+    }
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     
@@ -352,7 +358,7 @@ static BOOL m_safeFlag = NO;
     
     glTexImage2D( GL_TEXTURE_2D, 0, GL_RGBA, size.width, size.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, buff );
     free( buff );
-    free( colorSpace );
+    CGColorSpaceRelease( colorSpace );
     
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
@@ -405,10 +411,59 @@ static BOOL m_safeFlag = NO;
 }
 
 
-//------------------------------- private function -------------------------------
+//------------------------------------------ private function ------------------------------------------
 
 
-//TODO 
+// check the size of the bitmap is legal or not ( if the number of width | height is pow of 2 or not )
+- (BOOL)isImgSizeLegal:(CGSize)size
+{
+    int wid = size.width;
+    int hei = size.height;
+    
+    return ( ( wid & ( wid - 1 ) ) == 0 ) && ( ( hei & ( hei - 1 ) ) == 0 );
+}
+
+
+// scale the bitmap make it to the correct size for OpenGL
+- (UIImage*)reviseImage:(UIImage*)img scaleBigger:(BOOL)bigger
+{
+    UIImage* newImg = nil;
+    
+    int size = img.size.width > img.size.height ? img.size.width : img.size.height;
+    
+    int sizeList[] = { 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048 };
+    int listLen = sizeof( sizeList ) / sizeof(int);
+    int i;
+    int newSize = -1;
+    
+    if( bigger == YES )
+    {
+        for( i = 0; i < listLen; i++ )
+        {
+            if( sizeList[i] >= size )
+            {
+                newSize = sizeList[i];
+                break;
+            }
+        }
+    }
+    
+    if( bigger == NO )
+    {
+        for( i = 0; i < listLen; i++ )
+        {
+            if( sizeList[i] > size )
+            {
+                newSize = sizeList[i-1];
+                break;
+            }
+        }
+    }
+    
+    //TODO 
+    
+    return newImg;
+}
 
 
 @end

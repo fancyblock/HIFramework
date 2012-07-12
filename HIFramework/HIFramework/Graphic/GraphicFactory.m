@@ -67,6 +67,8 @@ static BOOL m_safeFlag = NO;
     {
         if( [[RenderCore sharedInstance] CreateTexture:imgName] == NO )
         {
+            [spr release];
+            
             NSException* exception = [NSException exceptionWithName:@"Texture Create Error" reason:@"Create texture fail" userInfo:nil];
             @throw exception;
         }
@@ -82,6 +84,12 @@ static BOOL m_safeFlag = NO;
 
 
 //TODO 
+
+
+//------------------------------------------ private function ------------------------------------------
+
+
+//
 
 
 @end

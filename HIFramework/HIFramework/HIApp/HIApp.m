@@ -35,7 +35,7 @@
 {
     [super init];
     
-    CGRect frame;
+    CGRect frame = CGRectMake( 0, 0, 0, 0 );
     if( m_orientation == ORIENTATION_LANDSCAPE )
     {
         if( m_deviceType == DEVICE_IPHONE )

@@ -60,9 +60,53 @@ static BOOL m_saftFlag = NO;
 {
     [super init];
     
-    //TODO 
+    m_root = [[UIWidget alloc] init];
     
     return self;
+}
+
+
+/**
+ * @desc    add a widget to the ui root
+ * @para    widget
+ * @return  none
+ */
+- (void)AddToRoot:(UIWidget*)widget
+{
+    //TODO 
+}
+
+
+/**
+ * @desc    remove all the ui
+ * @para    none
+ * @return  none
+ */
+- (void)CleanWidget
+{
+    //TODO
+}
+
+
+/**
+ * @desc    ui main
+ * @para    elapsed
+ * @return  none
+ */
+- (void)UIMain:(float)elapsed
+{
+    //TODO 
+}
+
+
+/**
+ * @desc    ui draw
+ * @para    elapsed
+ * @return  none
+ */
+- (void)UIDraw:(float)elapsed
+{
+    //TODO 
 }
 
 

@@ -9,6 +9,7 @@
 #import "HIApp.h"
 #import "RenderCore.h"
 #import "TaskManager.h"
+#import "UIManager.h"
 
 
 @interface HIApp(private)
@@ -144,7 +145,7 @@
 {
     [[TaskManager sharedInstance] ProcessPending];
     
-    //TODO  ui manager update
+    [[UIManager sharedInstance] UIMain:dt];
     [[TaskManager sharedInstance] Main:dt];
 }
 
@@ -155,7 +156,7 @@
     [[RenderCore sharedInstance] Clear];
     
     [[TaskManager sharedInstance] Draw:dt];
-    //TODO  ui render
+    [[UIManager sharedInstance] UIDraw:dt];
 }
 
 

@@ -7,14 +7,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIWidget.h"
 
 @interface UIManager : NSObject
 {
-    //TODO 
+    UIWidget* m_root;
 }
 
 + (UIManager*)sharedInstance;
 
+
+- (void)AddToRoot:(UIWidget*)widget;
+
+- (void)CleanWidget;
+
+- (void)UIMain:(float)elapsed;
+
+- (void)UIDraw:(float)elapsed;
 
 - (BOOL)onTouchEvent:(NSArray*)events;
 

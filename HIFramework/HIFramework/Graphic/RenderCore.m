@@ -347,6 +347,7 @@ static BOOL m_safeFlag = NO;
         UIImage* newPic = [self reviseImage:pic scaleBigger:YES];
         [pic release];
         pic = newPic;
+        size = pic.size;
     }
     
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
@@ -355,6 +356,7 @@ static BOOL m_safeFlag = NO;
     CGContextRef imageContext = CGBitmapContextCreate( buff, size.width, size.height, 8, size.width * 4, colorSpace, kCGImageAlphaPremultipliedLast);
     CGContextDrawImage(imageContext, CGRectMake(0.0, 0.0, size.width, size.height), pic.CGImage);
     CGContextRelease(imageContext); 
+    [pic release];
     
     glTexImage2D( GL_TEXTURE_2D, 0, GL_RGBA, size.width, size.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, buff );
     free( buff );
@@ -436,6 +438,7 @@ static BOOL m_safeFlag = NO;
     int i;
     int newSize = -1;
     
+    // calculate the new size
     if( bigger == YES )
     {
         for( i = 0; i < listLen; i++ )
@@ -460,7 +463,11 @@ static BOOL m_safeFlag = NO;
         }
     }
     
-    //TODO 
+    // draw the image with the new size
+    UIGraphicsBeginImageContext( CGSizeMake( newSize, newSize ) );
+    [img drawInRect:CGRectMake( 0, 0, newSize, newSize )];
+    newImg = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     
     return newImg;
 }

@@ -11,6 +11,7 @@
 @interface TestTask : Task
 {
     Sprite* m_spr;
+    Sprite* m_spr2;
 }
 
 @end

@@ -21,6 +21,9 @@
 		CF4FFE7B159F5B3E001C8234 /* Sprite.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4FFE7A159F5B3E001C8234 /* Sprite.m */; };
 		CF5495C315A1FFAB004CE6A6 /* GraphicFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5495C215A1FFAB004CE6A6 /* GraphicFactory.m */; };
 		CF628E9115AB4D3D00B88C1C /* TestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CF628E9015AB4D3D00B88C1C /* TestTask.m */; };
+		CF6E095615B12FEC002B3D2B /* 05.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6E095515B12FEC002B3D2B /* 05.png */; };
+		CF6E095915B155D5002B3D2B /* zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6E095815B155D5002B3D2B /* zombie.png */; };
+		CF6E095B15B157C4002B3D2B /* snake.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6E095A15B157C4002B3D2B /* snake.png */; };
 		CF74380715AD8B5A007E40A8 /* UIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF74380615AD8B5A007E40A8 /* UIManager.m */; };
 		CF76B95C15AFC80D00D34DC1 /* UIWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = CF76B95B15AFC80D00D34DC1 /* UIWidget.m */; };
 		CF7B773A15907F79006F03C6 /* RenderCore.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7B773915907F79006F03C6 /* RenderCore.m */; };
@@ -56,6 +59,9 @@
 		CF5495C215A1FFAB004CE6A6 /* GraphicFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GraphicFactory.m; path = Graphic/GraphicFactory.m; sourceTree = "<group>"; };
 		CF628E8F15AB4D3D00B88C1C /* TestTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestTask.h; path = Demo/TestTask.h; sourceTree = "<group>"; };
 		CF628E9015AB4D3D00B88C1C /* TestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestTask.m; path = Demo/TestTask.m; sourceTree = "<group>"; };
+		CF6E095515B12FEC002B3D2B /* 05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 05.png; sourceTree = "<group>"; };
+		CF6E095815B155D5002B3D2B /* zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zombie.png; sourceTree = "<group>"; };
+		CF6E095A15B157C4002B3D2B /* snake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snake.png; sourceTree = "<group>"; };
 		CF74380515AD8B5A007E40A8 /* UIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIManager.h; path = Gui/UIManager.h; sourceTree = "<group>"; };
 		CF74380615AD8B5A007E40A8 /* UIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIManager.m; path = Gui/UIManager.m; sourceTree = "<group>"; };
 		CF76B95A15AFC80D00D34DC1 /* UIWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIWidget.h; path = Gui/UIWidget.h; sourceTree = "<group>"; };
@@ -118,6 +124,9 @@
 		CF4C16E81563FE7B0078F4D6 = {
 			isa = PBXGroup;
 			children = (
+				CF6E095A15B157C4002B3D2B /* snake.png */,
+				CF6E095815B155D5002B3D2B /* zombie.png */,
+				CF6E095515B12FEC002B3D2B /* 05.png */,
 				CF4FFE73159EEAB9001C8234 /* nackm.png */,
 				CF7E1DEA15661A20005D58C9 /* Resource */,
 				CF4C16FD1563FE7B0078F4D6 /* HIFramework */,
@@ -304,6 +313,9 @@
 				CF4C17021563FE7B0078F4D6 /* InfoPlist.strings in Resources */,
 				CF7E1DE815661A13005D58C9 /* HIFramework_icon.png in Resources */,
 				CF4FFE74159EEAB9001C8234 /* nackm.png in Resources */,
+				CF6E095615B12FEC002B3D2B /* 05.png in Resources */,
+				CF6E095915B155D5002B3D2B /* zombie.png in Resources */,
+				CF6E095B15B157C4002B3D2B /* snake.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

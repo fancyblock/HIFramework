@@ -72,11 +72,13 @@
     
     if( m_orientation == ORIENTATION_LANDSCAPE )
     {
-        m_glViewController.CUR_ORIENTATION = UIInterfaceOrientationLandscapeLeft;
+        m_glViewController.CUR_ORIENTATION_SIDE1 = UIInterfaceOrientationLandscapeLeft;
+        m_glViewController.CUR_ORIENTATION_SIDE2 = UIInterfaceOrientationLandscapeRight;
     }
     if( m_orientation == ORIENTATION_PORTRAIT )
     {
-        m_glViewController.CUR_ORIENTATION = UIInterfaceOrientationPortrait;
+        m_glViewController.CUR_ORIENTATION_SIDE1 = UIInterfaceOrientationPortrait;
+        m_glViewController.CUR_ORIENTATION_SIDE2 = UIInterfaceOrientationPortraitUpsideDown;
     }
     
     m_glViewController.view = m_glView;

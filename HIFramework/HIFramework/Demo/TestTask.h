@@ -12,6 +12,7 @@
 {
     Sprite* m_spr;
     Sprite* m_spr2;
+    Sprite* m_spr3;
 }
 
 @end

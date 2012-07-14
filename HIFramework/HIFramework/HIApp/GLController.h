@@ -13,6 +13,7 @@
     //TODO 
 }
 
-@property (nonatomic, readwrite) UIInterfaceOrientation CUR_ORIENTATION;
+@property (nonatomic, readwrite) UIInterfaceOrientation CUR_ORIENTATION_SIDE1;
+@property (nonatomic, readwrite) UIInterfaceOrientation CUR_ORIENTATION_SIDE2;
 
 @end

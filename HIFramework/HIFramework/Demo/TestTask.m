@@ -19,6 +19,11 @@
     m_spr2 = [[GraphicFactory sharedInstance] CreateSprite:@"05.png"];
     [m_spr2 SetUVFrom:CGPointMake(0, 0) to:CGPointMake(1, 1)];
     [m_spr2 SetSize:CGPointMake(230, 230)];
+    
+    m_spr3 = [[GraphicFactory sharedInstance] CreateSprite:@"nackm.png"];
+    [m_spr3 SetUVFrom:CGPointMake(0, 0) to:CGPointMake(1, 1)];
+    [m_spr3 SetSize:CGPointMake(50, 50)];
+    [m_spr3 SetAnchor:CGPointMake(0.5f, 0.5f)];
 }
 
 - (void)onEnd
@@ -39,6 +44,8 @@
     //[m_spr SetColorR:1.0f andG:0.5f andB:0.25f andAlpha:1.0f];
     [m_spr SetAnchor:CGPointMake(0.5f, 0.5f)];
     [m_spr DrawAt:CGPointMake(150, 150) withSize:CGPointMake(200, 200) andAngle:0.0f];
+    
+    [m_spr3 DrawAt:CGPointMake(200, 200)];
 }
 
 

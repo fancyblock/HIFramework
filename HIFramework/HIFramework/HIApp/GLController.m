@@ -19,7 +19,9 @@
 
 @implementation GLController
 
-@synthesize CUR_ORIENTATION;
+@synthesize CUR_ORIENTATION_SIDE1;
+@synthesize CUR_ORIENTATION_SIDE2;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,7 +46,8 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == self.CUR_ORIENTATION);
+    return ( interfaceOrientation == self.CUR_ORIENTATION_SIDE1 ||
+             interfaceOrientation == self.CUR_ORIENTATION_SIDE2 );
 }
 
 

@@ -24,6 +24,13 @@
     [m_spr3 SetUVFrom:CGPointMake(0, 0) to:CGPointMake(1, 1)];
     [m_spr3 SetSize:CGPointMake(50, 50)];
     [m_spr3 SetAnchor:CGPointMake(0.5f, 0.5f)];
+    
+    m_soundId = [[SoundManager sharedInstance] LoadSound:@"bgm.mp3"];
+    //[[SoundManager sharedInstance] PlaySound:m_soundId withLoop:2];
+    
+    m_seId = [[SoundManager sharedInstance] LoadSound:@"eat.wav"];
+    [[SoundManager sharedInstance] PlaySound:m_seId withLoop:2];
+    
 }
 
 - (void)onEnd

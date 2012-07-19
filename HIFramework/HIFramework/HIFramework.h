@@ -20,4 +20,6 @@
 
 #import "Gui/UIManager.h"
 
+#import "Sound/SoundManager.h"
+
 #endif

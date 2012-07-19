@@ -9,5 +9,20 @@
 #import <UIKit/UIKit.h>
 
 @interface UIWidget : NSObject
+{
+    NSMutableArray* m_children;
+}
+
+- (void)onUIFrame:(float)elapse;
+
+- (void)onUIDraw:(float)elapse;
+
+- (void)onUIEvents:(NSArray*)events;
+
+- (void)SetParent:(UIWidget*)parent;
+
+- (void)SetRegion:(CGRect)region;
+
+//TODO 
 
 @end

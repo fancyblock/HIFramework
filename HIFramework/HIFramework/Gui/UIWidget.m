@@ -9,6 +9,58 @@
 #import "UIWidget.h"
 
 @implementation UIWidget
+
+
+/**
+ * @desc    frame update
+ * @para    elapse
+ * @return  none
+ */
+- (void)onUIFrame:(float)elapse
+{
+    //TODO  
+}
+
+
+/**
+ * @desc    render update
+ * @para    elapse
+ * @return  none
+ */
+- (void)onUIDraw:(float)elapse
+{
+    //TODO 
+}
+
+
+/**
+ * @desc    event handle
+ * @para    events  
+ * @return  none
+ */
+- (void)onUIEvents:(NSArray*)events
+{
+    //TODO 
+}
+
+
+/**
+ * @desc    set parents
+ * @para    parent
+ * @return  none
+ */
+- (void)SetParent:(UIWidget*)parent
+{
+    //TODO 
+}
+
+
+/**
+ * @desc    set region
+ * @para    region
+ * @return  none
+ */
+- (void)SetRegion:(CGRect)region
 {
     //TODO 
 }

@@ -137,12 +137,6 @@
 		CF4C16E81563FE7B0078F4D6 = {
 			isa = PBXGroup;
 			children = (
-				CF786EBA15B7DE7E00099D71 /* eat.wav */,
-				CF786EB515B7BB5600099D71 /* bgm.mp3 */,
-				CF6E095A15B157C4002B3D2B /* snake.png */,
-				CF6E095815B155D5002B3D2B /* zombie.png */,
-				CF6E095515B12FEC002B3D2B /* 05.png */,
-				CF4FFE73159EEAB9001C8234 /* nackm.png */,
 				CF7E1DEA15661A20005D58C9 /* Resource */,
 				CF4C16FD1563FE7B0078F4D6 /* HIFramework */,
 				CF4C16F61563FE7B0078F4D6 /* Frameworks */,
@@ -263,6 +257,12 @@
 		CF7E1DEA15661A20005D58C9 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				CF786EBA15B7DE7E00099D71 /* eat.wav */,
+				CF786EB515B7BB5600099D71 /* bgm.mp3 */,
+				CF6E095A15B157C4002B3D2B /* snake.png */,
+				CF6E095815B155D5002B3D2B /* zombie.png */,
+				CF6E095515B12FEC002B3D2B /* 05.png */,
+				CF4FFE73159EEAB9001C8234 /* nackm.png */,
 				CF7E1DE715661A13005D58C9 /* HIFramework_icon.png */,
 			);
 			name = Resource;

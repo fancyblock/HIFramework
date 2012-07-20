@@ -17,6 +17,8 @@
 @property (nonatomic, readwrite) float V2;
 @property (nonatomic, readwrite) float ANCHOR_X;
 @property (nonatomic, readwrite) float ANCHOR_Y;
+@property (nonatomic, readwrite) float SIZE_WID;
+@property (nonatomic, readwrite) float SIZE_HEI;
 
 @end
 
@@ -29,6 +31,7 @@
     float m_times;
     float m_x;
     float m_y;
+    float m_angle;
     
     NSString* m_texImgName;
 }
@@ -36,7 +39,10 @@
 @property (nonatomic, retain) NSString* TEXTURE;
 @property (nonatomic, readwrite) float INTERVAL;
 
-- (void)AddFrame:(CGRect)region withAnchor:(CGPoint)anchor;
+@property (nonatomic, readwrite) float ANGLE;
+
+
+- (void)AddFrame:(CGRect)region withAnchor:(CGPoint)anchor withSize:(CGPoint)size;
 
 - (void)Update:(float)elapsed;
 

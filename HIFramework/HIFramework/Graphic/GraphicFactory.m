@@ -9,6 +9,12 @@
 #import "GraphicFactory.h"
 #import "RenderCore.h"
 
+@interface GraphicFactory(private)
+
+- (BOOL)createTexture:(NSString*)imgName;
+
+@end
+
 @implementation GraphicFactory
 
 static GraphicFactory* m_instance = nil;
@@ -63,16 +69,7 @@ static BOOL m_safeFlag = NO;
     
     int texIndex = NO_TEXTURE;
     
-    if( [[RenderCore sharedInstance] IsTextureExist:imgName] == NO )
-    {
-        if( [[RenderCore sharedInstance] CreateTexture:imgName] == NO )
-        {
-            [spr release];
-            
-            NSException* exception = [NSException exceptionWithName:@"Texture Create Error" reason:@"Create texture fail" userInfo:nil];
-            @throw exception;
-        }
-    }
+    [self createTexture:imgName];
     
     texIndex = [[RenderCore sharedInstance] GetTextureInfo:imgName].INDEX;
     
@@ -83,13 +80,49 @@ static BOOL m_safeFlag = NO;
 }
 
 
+/**
+ * @desc    create movieclip
+ * @para    imgName
+ * @para    interval
+ * @return  movieClip
+ */
+- (MovieClip*)CreateMovieClip:(NSString*)imgName withInterval:(float)interval
+{
+    MovieClip* mc = [[MovieClip alloc] init];
+    
+    int texIndex = NO_TEXTURE;
+    
+    [self createTexture:imgName];
+    
+    texIndex = [[RenderCore sharedInstance] GetTextureInfo:imgName].INDEX;
+    
+    mc.TEXTURE = imgName;
+    mc.INTERVAL = interval;
+    
+    return mc;
+}
+
+
 //TODO 
 
 
 //------------------------------------------ private function ------------------------------------------
 
 
-//
+// create new texture
+- (BOOL)createTexture:(NSString*)imgName
+{
+    if( [[RenderCore sharedInstance] IsTextureExist:imgName] == NO )
+    {
+        if( [[RenderCore sharedInstance] CreateTexture:imgName] == NO )
+        {
+            NSException* exception = [NSException exceptionWithName:@"Texture Create Error" reason:@"Create texture fail" userInfo:nil];
+            @throw exception;
+        }
+    }
+    
+    return YES;
+}
 
 
 @end

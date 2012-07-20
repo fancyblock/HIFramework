@@ -24,6 +24,7 @@
 		CF6E095615B12FEC002B3D2B /* 05.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6E095515B12FEC002B3D2B /* 05.png */; };
 		CF6E095915B155D5002B3D2B /* zombie.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6E095815B155D5002B3D2B /* zombie.png */; };
 		CF6E095B15B157C4002B3D2B /* snake.png in Resources */ = {isa = PBXBuildFile; fileRef = CF6E095A15B157C4002B3D2B /* snake.png */; };
+		CF74090D15B92B52003FF3CE /* MovieClip.m in Sources */ = {isa = PBXBuildFile; fileRef = CF74090C15B92B51003FF3CE /* MovieClip.m */; };
 		CF74380715AD8B5A007E40A8 /* UIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF74380615AD8B5A007E40A8 /* UIManager.m */; };
 		CF76B95C15AFC80D00D34DC1 /* UIWidget.m in Sources */ = {isa = PBXBuildFile; fileRef = CF76B95B15AFC80D00D34DC1 /* UIWidget.m */; };
 		CF786EB115B7A8D500099D71 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CF786EB015B7A8D500099D71 /* SoundManager.m */; };
@@ -67,6 +68,8 @@
 		CF6E095515B12FEC002B3D2B /* 05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 05.png; sourceTree = "<group>"; };
 		CF6E095815B155D5002B3D2B /* zombie.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zombie.png; sourceTree = "<group>"; };
 		CF6E095A15B157C4002B3D2B /* snake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snake.png; sourceTree = "<group>"; };
+		CF74090B15B92B51003FF3CE /* MovieClip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovieClip.h; path = Graphic/MovieClip.h; sourceTree = "<group>"; };
+		CF74090C15B92B51003FF3CE /* MovieClip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovieClip.m; path = Graphic/MovieClip.m; sourceTree = "<group>"; };
 		CF74380515AD8B5A007E40A8 /* UIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIManager.h; path = Gui/UIManager.h; sourceTree = "<group>"; };
 		CF74380615AD8B5A007E40A8 /* UIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIManager.m; path = Gui/UIManager.m; sourceTree = "<group>"; };
 		CF76B95A15AFC80D00D34DC1 /* UIWidget.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIWidget.h; path = Gui/UIWidget.h; sourceTree = "<group>"; };
@@ -115,6 +118,8 @@
 		CF483820158E431A00529A53 /* Graphic */ = {
 			isa = PBXGroup;
 			children = (
+				CF74090B15B92B51003FF3CE /* MovieClip.h */,
+				CF74090C15B92B51003FF3CE /* MovieClip.m */,
 				CF7B773815907F79006F03C6 /* RenderCore.h */,
 				CF7B773915907F79006F03C6 /* RenderCore.m */,
 				CF4FFE79159F5B3E001C8234 /* Sprite.h */,
@@ -363,6 +368,7 @@
 				CF76B95C15AFC80D00D34DC1 /* UIWidget.m in Sources */,
 				CF786EB115B7A8D500099D71 /* SoundManager.m in Sources */,
 				CF786EB915B7C2FF00099D71 /* PlayerController.m in Sources */,
+				CF74090D15B92B52003FF3CE /* MovieClip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

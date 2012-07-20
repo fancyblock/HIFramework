@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Sprite.h"
+#import "MovieClip.h"
 
 
 @interface GraphicFactory : NSObject
@@ -19,6 +20,8 @@
 
 
 - (Sprite*)CreateSprite:(NSString*)imgName;
+
+- (MovieClip*)CreateMovieClip:(NSString*)imgName withInterval:(float)interval;
 
 
 @end

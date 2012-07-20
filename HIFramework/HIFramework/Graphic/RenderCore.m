@@ -353,6 +353,7 @@ static BOOL m_safeFlag = NO;
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
     
     GLubyte* buff = (GLubyte*)malloc( size.width * size.height * 4 );
+    memset( buff, 0, size.width * size.height * 4 );
     CGContextRef imageContext = CGBitmapContextCreate( buff, size.width, size.height, 8, size.width * 4, colorSpace, kCGImageAlphaPremultipliedLast);
     CGContextDrawImage(imageContext, CGRectMake(0.0, 0.0, size.width, size.height), pic.CGImage);
     CGContextRelease(imageContext); 
@@ -419,8 +420,17 @@ static BOOL m_safeFlag = NO;
  */
 - (void)CleanTextures
 {
+    glBindTexture( GL_TEXTURE_2D, 0 );
+    
     glDeleteTextures( MAX_TEXTURE_NUM, m_textures );
+    free( m_textures );
     [m_textureDic removeAllObjects];
+    [m_textureDic release];
+    
+    m_textures = (GLuint*)malloc( MAX_TEXTURE_NUM * sizeof( GLuint ) );
+    glGenTextures( MAX_TEXTURE_NUM, m_textures );
+    m_textureCount = 0;
+    m_textureDic = [[NSMutableDictionary alloc] initWithCapacity:MAX_TEXTURE_NUM];
     
     glGenTextures( MAX_TEXTURE_NUM, m_textures );
 }

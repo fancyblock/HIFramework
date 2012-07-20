@@ -70,5 +70,7 @@
 - (void)AddSprite:(Sprite*)spr;
 - (TextureInfo*)GetTextureInfo:(NSString*)picName;
 
+- (void)CleanTextures;
+
 
 @end

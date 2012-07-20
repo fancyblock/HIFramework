@@ -412,6 +412,20 @@ static BOOL m_safeFlag = NO;
 }
 
 
+/**
+ * @desc    clean all the textures and release memory
+ * @para    none
+ * @return  none
+ */
+- (void)CleanTextures
+{
+    glDeleteTextures( MAX_TEXTURE_NUM, m_textures );
+    [m_textureDic removeAllObjects];
+    
+    glGenTextures( MAX_TEXTURE_NUM, m_textures );
+}
+
+
 //------------------------------------------ private function ------------------------------------------
 
 

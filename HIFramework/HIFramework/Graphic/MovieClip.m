@@ -59,6 +59,7 @@
     
     [m_frameList removeAllObjects];
     [m_frameList release];
+    [m_sprite release];
 }
 
 

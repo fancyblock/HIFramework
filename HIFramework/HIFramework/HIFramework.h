@@ -19,6 +19,8 @@
 #import "Task/Task.h"
 
 #import "Gui/UIManager.h"
+#import "GUI/UIController/GUIButton.h"
+#import "GUI/UIController/GUICheckBox.h"
 
 #import "Sound/SoundManager.h"
 

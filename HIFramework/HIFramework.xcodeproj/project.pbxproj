@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF0B5F6F15BAFF94004DBDF9 /* GUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0B5F6E15BAFF94004DBDF9 /* GUIButton.m */; };
+		CF0B5F7215BAFFDC004DBDF9 /* GUICheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = CF0B5F7115BAFFDC004DBDF9 /* GUICheckBox.m */; };
 		CF30A79315AF340200AAE45D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF30A79215AF340200AAE45D /* OpenAL.framework */; };
 		CF30A79615AF340D00AAE45D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF30A79515AF340D00AAE45D /* AudioToolbox.framework */; };
 		CF4838381593890500529A53 /* TouchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4838371593890500529A53 /* TouchEvent.m */; };
@@ -42,6 +44,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF0B5F6D15BAFF94004DBDF9 /* GUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GUIButton.h; path = Gui/UIController/GUIButton.h; sourceTree = "<group>"; };
+		CF0B5F6E15BAFF94004DBDF9 /* GUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GUIButton.m; path = Gui/UIController/GUIButton.m; sourceTree = "<group>"; };
+		CF0B5F7015BAFFDC004DBDF9 /* GUICheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GUICheckBox.h; path = Gui/UIController/GUICheckBox.h; sourceTree = "<group>"; };
+		CF0B5F7115BAFFDC004DBDF9 /* GUICheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GUICheckBox.m; path = Gui/UIController/GUICheckBox.m; sourceTree = "<group>"; };
 		CF30A79215AF340200AAE45D /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		CF30A79515AF340D00AAE45D /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		CF4838361593890500529A53 /* TouchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TouchEvent.h; path = Events/TouchEvent.h; sourceTree = "<group>"; };
@@ -115,6 +121,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF0B5F6815BAFDEA004DBDF9 /* UIController */ = {
+			isa = PBXGroup;
+			children = (
+				CF0B5F6D15BAFF94004DBDF9 /* GUIButton.h */,
+				CF0B5F6E15BAFF94004DBDF9 /* GUIButton.m */,
+				CF0B5F7015BAFFDC004DBDF9 /* GUICheckBox.h */,
+				CF0B5F7115BAFFDC004DBDF9 /* GUICheckBox.m */,
+			);
+			name = UIController;
+			sourceTree = "<group>";
+		};
 		CF483820158E431A00529A53 /* Graphic */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,13 +228,6 @@
 			name = Demo;
 			sourceTree = "<group>";
 		};
-		CF76B95815AFC77300D34DC1 /* UIEvents */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = UIEvents;
-			sourceTree = "<group>";
-		};
 		CF7B773B15907FBD006F03C6 /* Task */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,7 +260,7 @@
 		CF7B773E15907FE1006F03C6 /* Gui */ = {
 			isa = PBXGroup;
 			children = (
-				CF76B95815AFC77300D34DC1 /* UIEvents */,
+				CF0B5F6815BAFDEA004DBDF9 /* UIController */,
 				CF74380515AD8B5A007E40A8 /* UIManager.h */,
 				CF74380615AD8B5A007E40A8 /* UIManager.m */,
 				CF76B95A15AFC80D00D34DC1 /* UIWidget.h */,
@@ -369,6 +379,8 @@
 				CF786EB115B7A8D500099D71 /* SoundManager.m in Sources */,
 				CF786EB915B7C2FF00099D71 /* PlayerController.m in Sources */,
 				CF74090D15B92B52003FF3CE /* MovieClip.m in Sources */,
+				CF0B5F6F15BAFF94004DBDF9 /* GUIButton.m in Sources */,
+				CF0B5F7215BAFFDC004DBDF9 /* GUICheckBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

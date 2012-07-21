@@ -106,7 +106,7 @@ static BOOL m_saftFlag = NO;
  */
 - (void)UIDraw:(float)elapsed
 {
-    [m_root onUIDraw:elapsed];
+    [m_root onUIDraw];
 }
 
 

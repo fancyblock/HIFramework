@@ -249,12 +249,8 @@
  */
 - (void)SetAnchor:(CGPoint)anchor
 {
-    if( anchor.x >= 0.0f && anchor.x <= 1.0f &&
-       anchor.y >= 0.0f && anchor.y <= 1.0f )
-    {
-        m_anchorX = anchor.x;
-        m_anchorY = anchor.y;
-    }
+    m_anchorX = anchor.x;
+    m_anchorY = anchor.y;
 }
 
 

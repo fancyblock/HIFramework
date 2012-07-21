@@ -12,6 +12,59 @@
 
 
 /**
+ * @desc    constructor
+ * @para    none
+ * @return  self
+ */
+- (id)init
+{
+    [super init];
+    
+    m_children = [[NSMutableArray alloc] init];
+    m_parent = nil;
+    
+    return self;
+}
+
+
+/**
+ * @desc    deconstructor
+ * @para    none
+ * @return  none
+ */
+- (void)dealloc
+{
+    [m_children removeAllObjects];
+    [m_children release];
+    
+    [super dealloc];
+}
+
+
+/**
+ * @desc    property getter
+ */
+- (float)POS_X { return m_x; }
+- (float)POS_Y { return m_y; }
+- (float)SCREEN_POS_X { return m_screenX; }
+- (float)SCREEN_POS_Y { return m_screenY; }
+- (float)WIDTH { return m_width; }
+- (float)HEIGHT { return m_height; }
+- (NSArray*)CHILDREN { return m_children; }
+
+
+/**
+ * @desc    property getter & setter
+ */
+- (BOOL)SHOW { return m_isShow; }
+- (BOOL)ENABLE { return m_isEnable; }
+- (BOOL)BLOCK_EVENT { return m_isBlockEvent; }
+- (void)setSHOW:(BOOL)SHOW { m_isShow = SHOW; }
+- (void)setENABLE:(BOOL)ENABLE { m_isEnable = ENABLE; }
+- (void)setBLOCK_EVENT:(BOOL)BLOCK_EVENT { m_isBlockEvent = BLOCK_EVENT; }
+
+
+/**
  * @desc    frame update
  * @para    elapse
  * @return  none
@@ -36,11 +89,13 @@
 /**
  * @desc    event handle
  * @para    events  
- * @return  none
+ * @return  if any widget handle the event
  */
-- (void)onUIEvents:(NSArray*)events
+- (BOOL)onUIEvents:(NSArray*)events
 {
     //TODO 
+    
+    return NO;
 }
 
 
@@ -65,6 +120,56 @@
     //TODO 
 }
 
-//TODO 
+
+/**
+ * @desc    set screen region
+ * @para    region
+ * @return  none
+ */
+- (void)SetScreenRegion:(CGRect)region
+{
+    //TODO 
+}
+
+
+/**
+ * @desc    remove all child
+ * @para    none
+ * @return  none
+ */
+- (void)RemoveAllChild
+{
+    //TODO 
+}
+
+
+/**
+ * @desc    remove child
+ * @para    child   
+ * @return  none
+ */
+- (void)RemoveChild:(UIWidget*)child
+{
+    //TODO 
+}
+
+
+//------------------------ be implement ------------------------
+
+- (void)uiMain:(float)elapse {}
+- (void)uiDraw {}
+- (void)uiDrawFG {}
+- (BOOL)uiEvent:(NSArray*)events { return NO; }
+
+//---------------------- private function ----------------------
+
+// judge if this point is in widget's area or not
+- (BOOL)isInArea:(CGPoint)point
+{
+    //TODO 
+    
+    return NO;
+}
+
 
 @end

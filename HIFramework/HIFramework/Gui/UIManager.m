@@ -73,7 +73,7 @@ static BOOL m_saftFlag = NO;
  */
 - (void)AddToRoot:(UIWidget*)widget
 {
-    //TODO 
+    [widget SetParent:m_root];
 }
 
 
@@ -84,7 +84,7 @@ static BOOL m_saftFlag = NO;
  */
 - (void)CleanWidget
 {
-    //TODO
+    [m_root RemoveAllChild];
 }
 
 
@@ -95,7 +95,7 @@ static BOOL m_saftFlag = NO;
  */
 - (void)UIMain:(float)elapsed
 {
-    //TODO 
+    [m_root onUIFrame:elapsed];
 }
 
 
@@ -106,7 +106,7 @@ static BOOL m_saftFlag = NO;
  */
 - (void)UIDraw:(float)elapsed
 {
-    //TODO 
+    [m_root onUIDraw:elapsed];
 }
 
 
@@ -117,9 +117,7 @@ static BOOL m_saftFlag = NO;
  */
 - (BOOL)onTouchEvent:(NSArray*)events
 {
-    //TODO 
-    
-    return NO;
+    return [m_root onUIEvents:events];
 }
 
 

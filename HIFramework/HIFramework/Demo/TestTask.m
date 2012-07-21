@@ -25,6 +25,15 @@
     [m_spr3 SetSize:CGPointMake(50, 50)];
     [m_spr3 SetAnchor:CGPointMake(0.5f, 0.5f)];
     
+    m_btn = [[GUIButton alloc] initWithRes:@"05.png"];
+    [m_btn SetCallback:self];
+    [m_btn SetUpUVFrom:CGPointMake(0, 0) to:CGPointMake(0.5, 0.5)];
+    [m_btn SetDownUVFrom:CGPointMake(0.5, 0.5) to:CGPointMake(1, 1)];
+    [m_btn SetDisableUVFrom:CGPointMake(0.5, 0.5) to:CGPointMake(1, 1)];
+    [m_btn SetRegion:CGRectMake(30, 30, 50, 50)];
+    
+    [[UIManager sharedInstance] AddToRoot:m_btn];
+    
     m_soundId = [[SoundManager sharedInstance] LoadSound:@"bgm.mp3"];
     //[[SoundManager sharedInstance] PlaySound:m_soundId withLoop:2];
     
@@ -75,5 +84,21 @@
 
 
 - (void)onDestory{}
+
+
+- (void)onButtonDown:(GUIButton*)btn
+{
+    
+}
+
+- (void)onButtonUp:(GUIButton*)btn
+{
+    
+}
+
+- (void)onButtonClick:(GUIButton*)btn
+{
+    [[SoundManager sharedInstance] PlaySound:m_soundId withLoop:1];
+}
 
 @end

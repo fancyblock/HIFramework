@@ -8,11 +8,13 @@
 
 #import "HIFramework.h"
 
-@interface TestTask : Task
+@interface TestTask : Task<IButtonCallback>
 {
     Sprite* m_spr;
     Sprite* m_spr2;
     Sprite* m_spr3;
+    
+    GUIButton* m_btn;
     
     int m_soundId;
     int m_seId;

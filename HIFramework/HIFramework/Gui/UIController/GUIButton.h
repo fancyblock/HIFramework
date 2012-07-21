@@ -34,6 +34,15 @@
 
 @property (nonatomic, readonly) BOOL IsDown;
 
-//TODO 
+
+- (id)initWithRes:(NSString*)imgName;
+
+- (void)SetUpUVFrom:(CGPoint)uvLeftTop to:(CGPoint)uvRightDown;
+
+- (void)SetDownUVFrom:(CGPoint)uvLeftTop to:(CGPoint)uvRightDown;
+
+- (void)SetDisableUVFrom:(CGPoint)uvLeftTop to:(CGPoint)uvRightDown;
+
+- (void)SetCallback:(id<IButtonCallback>)callback;
 
 @end

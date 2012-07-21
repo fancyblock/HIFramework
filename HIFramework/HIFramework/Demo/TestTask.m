@@ -32,7 +32,13 @@
     [m_btn SetDisableUVFrom:CGPointMake(0.5, 0.5) to:CGPointMake(1, 1)];
     [m_btn SetRegion:CGRectMake(30, 30, 50, 50)];
     
+    m_cb = [[GUICheckBox alloc] initWithRes:@"05.png"];
+    [m_cb SetCheckedUVFrom:CGPointMake(0, 0) to:CGPointMake(0.5, 0.5)];
+    [m_cb SetUnCheckedUVFrom:CGPointMake(0, 0) to:CGPointMake(1, 1)];
+    [m_cb SetRegion:CGRectMake(100, 30, 50, 50)];
+    
     [[UIManager sharedInstance] AddToRoot:m_btn];
+    [[UIManager sharedInstance] AddToRoot:m_cb];
     
     m_soundId = [[SoundManager sharedInstance] LoadSound:@"bgm.mp3"];
     //[[SoundManager sharedInstance] PlaySound:m_soundId withLoop:2];

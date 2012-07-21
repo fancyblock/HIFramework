@@ -15,6 +15,7 @@
     Sprite* m_spr3;
     
     GUIButton* m_btn;
+    GUICheckBox* m_cb;
     
     int m_soundId;
     int m_seId;

@@ -22,6 +22,9 @@
     
     m_children = [[NSMutableArray alloc] init];
     m_parent = nil;
+    m_isEnable = YES;
+    m_isShow = YES;
+    m_isUnBlockEvent = NO;
     
     return self;
 }
@@ -58,10 +61,10 @@
  */
 - (BOOL)SHOW { return m_isShow; }
 - (BOOL)ENABLE { return m_isEnable; }
-- (BOOL)BLOCK_EVENT { return m_isBlockEvent; }
+- (BOOL)UNBLOCK_EVENT { return m_isUnBlockEvent; }
 - (void)setSHOW:(BOOL)SHOW { m_isShow = SHOW; }
 - (void)setENABLE:(BOOL)ENABLE { m_isEnable = ENABLE; }
-- (void)setBLOCK_EVENT:(BOOL)BLOCK_EVENT { m_isBlockEvent = BLOCK_EVENT; }
+- (void)setUNBLOCK_EVENT:(BOOL)BLOCK_EVENT { m_isUnBlockEvent = BLOCK_EVENT; }
 
 
 /**
@@ -71,18 +74,49 @@
  */
 - (void)onUIFrame:(float)elapse
 {
-    //TODO  
+    if( m_parent != nil )
+    {
+        m_screenX = m_parent.SCREEN_POS_X + m_x;
+        m_screenY = m_parent.SCREEN_POS_Y + m_y;
+    }
+    
+    [self uiMain:elapse];
+    
+    UIWidget* child;
+    int len = [m_children count];
+    for( int i = 0; i < len; i++ )
+    {
+        child = [m_children objectAtIndex:i];
+        [child onUIFrame:elapse];
+    }
+    
 }
 
 
 /**
  * @desc    render update
- * @para    elapse
+ * @para    none
  * @return  none
  */
-- (void)onUIDraw:(float)elapse
+- (void)onUIDraw
 {
-    //TODO 
+    if( m_isShow == NO )
+    {
+        return;
+    }
+    
+    [self uiDraw];
+    
+    UIWidget* child;
+    int len = [m_children count];
+    for( int i = 0; i < len; i++ )
+    {
+        child = [m_children objectAtIndex:i];
+        [child onUIDraw];
+    }
+    
+    [self uiDrawFG];
+    
 }
 
 
@@ -93,9 +127,29 @@
  */
 - (BOOL)onUIEvents:(NSArray*)events
 {
-    //TODO 
+    if( m_isEnable == NO || m_isShow == NO )
+    {
+        return NO;
+    }
     
-    return NO;
+    UIWidget* child;
+    int len = [m_children count];
+    for( int i = 0; i < len; i++ )
+    {
+        child = [m_children objectAtIndex:i];
+        if( [child onUIEvents:events] == YES )
+        {
+            return YES;
+        }
+    }
+    
+    BOOL process = [self uiEvent:events];
+    if( m_isUnBlockEvent == YES )
+    {
+        return NO;
+    }
+    
+    return process;
 }
 
 
@@ -106,7 +160,22 @@
  */
 - (void)SetParent:(UIWidget*)parent
 {
-    //TODO 
+    if( m_parent == parent )
+    {
+        return;
+    }
+    
+    if( m_parent != nil )
+    {
+        [m_parent RemoveChild:self];
+    }
+    
+    m_parent = parent;
+    
+    if( m_parent != nil )
+    {
+        [m_parent.CHILDREN addObject:self];
+    }
 }
 
 
@@ -117,7 +186,11 @@
  */
 - (void)SetRegion:(CGRect)region
 {
-    //TODO 
+    m_x = region.origin.x;
+    m_y = region.origin.y;
+    
+    m_width = region.size.width;
+    m_height = region.size.height;
 }
 
 
@@ -128,7 +201,11 @@
  */
 - (void)SetScreenRegion:(CGRect)region
 {
-    //TODO 
+    m_screenX = region.origin.x;
+    m_screenY = region.origin.y;
+    
+    m_width = region.size.width;
+    m_height = region.size.height;
 }
 
 
@@ -139,7 +216,13 @@
  */
 - (void)RemoveAllChild
 {
-    //TODO 
+    UIWidget* child;
+    int len = [m_children count];
+    for( int i = 0; i < len; i++ )
+    {
+        child = [m_children objectAtIndex:i];
+        [child SetParent:nil];
+    }
 }
 
 
@@ -150,7 +233,7 @@
  */
 - (void)RemoveChild:(UIWidget*)child
 {
-    //TODO 
+    [child SetParent:nil];
 }
 
 
@@ -166,7 +249,11 @@
 // judge if this point is in widget's area or not
 - (BOOL)isInArea:(CGPoint)point
 {
-    //TODO 
+    if( point.x >= m_screenY && point.x <= ( m_screenX + m_width ) &&
+        point.y >= m_screenY && point.y <= ( m_screenY + m_height ) )
+    {
+        return YES;
+    }
     
     return NO;
 }

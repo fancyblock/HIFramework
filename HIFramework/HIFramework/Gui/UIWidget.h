@@ -22,7 +22,7 @@
     
     BOOL m_isShow;
     BOOL m_isEnable;
-    BOOL m_isBlockEvent;
+    BOOL m_isUnBlockEvent;
 }
 
 // readonly property
@@ -33,17 +33,17 @@
 @property (nonatomic, readonly) float WIDTH;
 @property (nonatomic, readonly) float HEIGHT;
 
-@property (nonatomic, readonly) NSArray* CHILDREN;
+@property (nonatomic, readonly) NSMutableSet* CHILDREN;
 
 // setable property
 @property (nonatomic, readwrite) BOOL SHOW;
 @property (nonatomic, readwrite) BOOL ENABLE;
-@property (nonatomic, readwrite) BOOL BLOCK_EVENT;
+@property (nonatomic, readwrite) BOOL UNBLOCK_EVENT;
 
 
 - (void)onUIFrame:(float)elapse;
 
-- (void)onUIDraw:(float)elapse;
+- (void)onUIDraw;
 
 - (BOOL)onUIEvents:(NSArray*)events;
 
